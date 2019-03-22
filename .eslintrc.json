@@ -1,0 +1,63 @@
+{
+    "extends": [
+      "airbnb"
+    ],
+    "env": {
+      "node": 1,
+      "meteor": 1,
+      "browser": 1,
+      "mocha": 1
+    },
+    "parser": "babel-eslint",
+    "rules": {
+      "global-require": [
+        "warn"
+      ],
+      "max-len": [
+        "warn"
+      ],
+      "no-param-reassign": [
+        "off"
+      ],
+      "consistent-return": ["warn"],
+      "no-underscore-dangle": "off",
+      "no-unused-vars": [
+        "warn",
+        {
+          "args": "none"
+        }
+      ],
+      "camelcase": "warn",
+      "react/no-unused-state":"warn",
+      "import/extensions": [
+        "warn",
+        {
+          "json": "always"
+        }
+      ],
+      "import/no-absolute-path": [
+        "error"
+      ],
+      "import/no-unresolved": [
+        "error"
+      ],
+      "react/jsx-filename-extension": ["off"],
+      "jsx-a11y/click-events-have-key-events": [
+        "warn"
+      ],
+      "jsx-a11y/no-noninteractive-element-interactions": [
+        "warn"
+      ],
+      "jsx-a11y/no-static-element-interactions": [
+        "warn"
+      ],
+      "jsx-a11y/anchor-is-valid": [ "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ]
+      }],
+      "react/prop-types": [
+          "warn"
+      ]
+  
+    }
+  }  
