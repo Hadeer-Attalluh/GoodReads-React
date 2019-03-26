@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import AuthorsData from '../src/Data/Authers';
+import AuthorsAdminListing from '../src/FeaturedComponents/Admin/Auther/Listing';
+
+
+export const context = React.createContext();
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      Authors: AuthorsData.slice(),
+    }
+    this.addAuthor = this.addAuthor.bind(this);
+    this.deleteAuthor = this.deleteAuthor.bind(this);
+  }
+
+
+  addAuthor(author)
+  {
+    const newAuthors = this.state.Authors.slice();
+    this.setState({Authors: [...newAuthors.concat(author)]});
+  }
+  deleteAuthor(authorID)
+  {
+    const newAuthors = this.state.Authors.slice();
+    newAuthors.find(a=> a.id===authorID).deleted = true
+    this.setState({Authors: [...newAuthors]});
+  }
+
+
   render() {
+    const contextValue = {
+      authors: this.state.Authors,
+      addAuthor:this.addAuthor,
+      deleteAuthor:this.deleteAuthor,
+    }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <context.Provider value={contextValue}>
+        <AuthorsAdminListing  />
+      </context.Provider>
     );
   }
 }
