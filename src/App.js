@@ -6,6 +6,7 @@ import AuthorsAdminListing from '../src/FeaturedComponents/Admin/Auther/Listing'
 
 import BooksData from '../src/Data/Books';
 import BooksDisplayListing from '../src/FeaturedComponents/Featured/Book/Listing';
+import BookDetails from '../src/FeaturedComponents/Featured/Book/Details';
 
 export const context = React.createContext();
 class App extends Component {
@@ -52,7 +53,8 @@ class App extends Component {
     return (
       <context.Provider value={contextValue}>
         {/* <AuthorsAdminListing /> */}
-        <BooksDisplayListing />
+        {/* <BooksDisplayListing /> */}
+        <BookDetails {...contextValue.books[1]} />
       </context.Provider>
     );
   }
