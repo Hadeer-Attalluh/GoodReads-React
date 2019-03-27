@@ -13,12 +13,11 @@ export default class AuthorsAdminListing extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
     }
-    handleClose = ()=>{
-        this.setState({showAddModal:false});
+    handleClose = () => {
+        this.setState({ showAddModal: false });
     }
-    handleShow = ()=>
-    {
-        this.setState({showAddModal:true})
+    handleShow = () => {
+        this.setState({ showAddModal: true })
     }
     render() {
         return (

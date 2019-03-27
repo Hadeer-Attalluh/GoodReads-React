@@ -13,32 +13,37 @@ class App extends Component {
       Authors: AuthorsData.slice(),
     }
     this.addAuthor = this.addAuthor.bind(this);
+    this.editAuthor = this.editAuthor.bind(this);
     this.deleteAuthor = this.deleteAuthor.bind(this);
   }
 
 
-  addAuthor(author)
-  {
+  addAuthor(author) {
     const newAuthors = this.state.Authors.slice();
-    this.setState({Authors: [...newAuthors.concat(author)]});
+    this.setState({ Authors: [...newAuthors.concat(author)] });
   }
-  deleteAuthor(authorID)
-  {
+  editAuthor(author){
     const newAuthors = this.state.Authors.slice();
-    newAuthors.find(a=> a.id===authorID).deleted = true
-    this.setState({Authors: [...newAuthors]});
+    // newAuthors.find(a => a.id === author.id) = author ;
+    
+    this.setState({ Authors: [...newAuthors] });
+  }
+  deleteAuthor(authorID) {
+    const newAuthors = this.state.Authors.slice();
+    newAuthors.find(a => a.id === authorID).deleted = true
+    this.setState({ Authors: [...newAuthors] });
   }
 
 
   render() {
     const contextValue = {
       authors: this.state.Authors,
-      addAuthor:this.addAuthor,
-      deleteAuthor:this.deleteAuthor,
+      addAuthor: this.addAuthor,
+      deleteAuthor: this.deleteAuthor,
     }
     return (
       <context.Provider value={contextValue}>
-        <AuthorsAdminListing  />
+        <AuthorsAdminListing />
       </context.Provider>
     );
   }
