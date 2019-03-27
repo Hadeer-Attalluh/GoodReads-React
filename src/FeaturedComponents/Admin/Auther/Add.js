@@ -3,7 +3,7 @@ import React from 'react';
 
 import SimpleSchema from 'simpl-schema';
 
-// import { context } from '../../../App';
+import { context } from '../../../App';
 import uuidv1 from 'uuid/v1';
 
 export default class AddAuthorForm extends React.Component {
@@ -24,7 +24,8 @@ export default class AddAuthorForm extends React.Component {
             'last-name': { type: String, required: true, min: 3, max: 50 },
             photo: { type: String, regEx: SimpleSchema.RegEx.Url }, // has  an issue
             birthdate: String
-        }, { requiredByDefault: false,}).newContext();
+        }, { requiredByDefault: false}).newContext();
+        // formValidatorCtx.validate(this.state).clean(this.state,{removeEmptyStrings: true});
         formValidatorCtx.validate(this.state);
         if (formValidatorCtx.validationErrors().length === 0) {
             let newAuthor = {
