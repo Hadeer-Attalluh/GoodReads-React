@@ -6,10 +6,10 @@ import SimpleSchema from 'simpl-schema';
 import { context } from '../../../App';
 import uuidv1 from 'uuid/v1';
 
-export default class AddAuthorForm extends React.Component {
+export default class AddEditAuthorForm extends React.Component {
     constructor(props) {
         super(props);
-        if (this.props.editMode) {
+        if (this.props.editmode) {
             this.state = {
                 'first-name': this.props['first-name'],
                 'last-name': this.props['last-name'],
@@ -27,7 +27,7 @@ export default class AddAuthorForm extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
     }
-    handleSubmit = (addHandler) => (e) => {
+    handleSubmit = (actionHandler) => (e) => {
         e.preventDefault();
         const formValidatorCtx = new SimpleSchema({
             'first-name': { type: String, required: true, min: 3, max: 50 },
@@ -46,7 +46,14 @@ export default class AddAuthorForm extends React.Component {
                 birthdate: this.state.birthdate,
                 deleted: false
             }
-            addHandler(newAuthor);
+            if (this.props.editmode) {
+                newAuthor.id = this.props.id;
+                actionHandler(newAuthor); // edit function
+            }
+            else {
+
+                actionHandler(newAuthor); // add function
+            }
             this.setState({ photo: "", birthdate: "", 'first-name': "", 'last-name': "" })
             this.props.onHide();
         }
@@ -65,10 +72,10 @@ export default class AddAuthorForm extends React.Component {
                     value => (
                         <Modal {...this.props}>
                             <Modal.Header closeButton>
-                                <Modal.Title>{this.props.editMode?"Edit Author":"Add New Author"}</Modal.Title>
+                                <Modal.Title>{this.props.editmode ? "Edit Author" : "Add New Author"}</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <Form onSubmit={this.handleSubmit(value.addAuthor)}>
+                                <Form onSubmit={this.props.editmode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)}>
                                     <Form.Group controlId="fName">
                                         <Form.Label>First Name</Form.Label>
                                         <Form.Control placeholder="Enter First Name" name="first-name" value={this.state['first-name']} onChange={this.handleChange} />
@@ -82,7 +89,7 @@ export default class AddAuthorForm extends React.Component {
                                         <Form.Label>Photo URl</Form.Label>
                                         <Form.Control placeholder="Enter Photo URL" name="photo" value={this.state.photo} onChange={this.handleChange} />
                                     </Form.Group>
-                                    <Form.Group controlId="photoURL">
+                                    <Form.Group controlId="birthdate">
                                         <Form.Label>Birthdate</Form.Label>
                                         <Form.Control placeholder="Enter Birthdate" name="birthdate" value={this.state.birthdate} onChange={this.handleChange} />
                                     </Form.Group>
@@ -90,7 +97,7 @@ export default class AddAuthorForm extends React.Component {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.props.onHide}>Close</Button>
-                                <Button variant="primary" type="submit" onClick={this.props.editMode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)}>{this.props.editMode ? "Save Changes" : "Add"}</Button>
+                                <Button variant="primary" type="submit" onClick={this.props.editmode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)}>{this.props.editmode ? "Save Changes" : "Add"}</Button>
                             </Modal.Footer>
                         </Modal>
                     )

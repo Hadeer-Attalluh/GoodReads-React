@@ -3,7 +3,7 @@ import { Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
 import { context } from '../../../App';
 
 import AuthorAdminCard from './Card';
-import AddAuthorForm from './Add';
+import AddAuthorForm from './AddEdit';
 export default class AuthorsAdminListing extends React.Component {
     constructor() {
         super();
@@ -28,7 +28,7 @@ export default class AuthorsAdminListing extends React.Component {
                             <Row className="no-gutters m-1 d-flex flex-row-reverse">
                                 <Button className="align-self-end" onClick={this.handleShow}><i className="fas fa-user-plus"></i></Button>
                             </Row>
-                            <AddAuthorForm show={this.state.showAddModal} onHide={this.handleClose} editMode={false}/>
+                            <AddAuthorForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false}/>
                             <Row className="no-gutters m-1">
                                 <Col sm={12}>
                                     <ListGroup>
