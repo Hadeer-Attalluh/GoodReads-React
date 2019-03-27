@@ -3,7 +3,7 @@ import React from 'react';
 
 import SimpleSchema from 'simpl-schema';
 
-import { context } from '../../../App';
+// import { context } from '../../../App';
 import uuidv1 from 'uuid/v1';
 
 export default class AddAuthorForm extends React.Component {
