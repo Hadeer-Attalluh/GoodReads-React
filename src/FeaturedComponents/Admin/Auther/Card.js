@@ -9,7 +9,7 @@ export default class AuthorAdminCard extends React.Component {
     handleEdit = (editHandler) => () => {
     }
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <context.Consumer>
                 {

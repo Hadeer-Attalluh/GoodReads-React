@@ -7,24 +7,34 @@ import { context } from '../../../App';
 import uuidv1 from 'uuid/v1';
 
 export default class AddAuthorForm extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            'first-name': "",
-            'last-name': "",
-            photo: "",
-            birthdate: "",
+    constructor(props) {
+        super(props);
+        if (this.props.editMode) {
+            this.state = {
+                'first-name': this.props['first-name'],
+                'last-name': this.props['last-name'],
+                photo: this.props.photo,
+                birthdate: this.props.birthdate,
+            }
+        }
+        else {
+            this.state = {
+                'first-name': "",
+                'last-name': "",
+                photo: "",
+                birthdate: "",
+            }
         }
         this.handleChange = this.handleChange.bind(this);
     }
-    addAuthor = (addHandler) => (e) => {
+    handleSubmit = (addHandler) => (e) => {
         e.preventDefault();
         const formValidatorCtx = new SimpleSchema({
             'first-name': { type: String, required: true, min: 3, max: 50 },
             'last-name': { type: String, required: true, min: 3, max: 50 },
             photo: { type: String, regEx: SimpleSchema.RegEx.Url }, // has  an issue
             birthdate: String
-        }, { requiredByDefault: false}).newContext();
+        }, { requiredByDefault: false }).newContext();
         // formValidatorCtx.validate(this.state).clean(this.state,{removeEmptyStrings: true});
         formValidatorCtx.validate(this.state);
         if (formValidatorCtx.validationErrors().length === 0) {
@@ -44,9 +54,6 @@ export default class AddAuthorForm extends React.Component {
             console.log(formValidatorCtx.validationErrors());
         }
     }
-    editAuthor = (editHandler) => (e) => { 
-
-    }
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -58,10 +65,10 @@ export default class AddAuthorForm extends React.Component {
                     value => (
                         <Modal {...this.props}>
                             <Modal.Header closeButton>
-                                <Modal.Title>Add New Author</Modal.Title>
+                                <Modal.Title>{this.props.editMode?"Edit Author":"Add New Author"}</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <Form onSubmit={this.addAuthor(value.addAuthor)}>
+                                <Form onSubmit={this.handleSubmit(value.addAuthor)}>
                                     <Form.Group controlId="fName">
                                         <Form.Label>First Name</Form.Label>
                                         <Form.Control placeholder="Enter First Name" name="first-name" value={this.state['first-name']} onChange={this.handleChange} />
@@ -83,7 +90,7 @@ export default class AddAuthorForm extends React.Component {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.props.onHide}>Close</Button>
-                                <Button variant="primary" type="submit" onClick={this.addAuthor(value.addAuthor)}>Add</Button>
+                                <Button variant="primary" type="submit" onClick={this.props.editMode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)}>{this.props.editMode ? "Save Changes" : "Add"}</Button>
                             </Modal.Footer>
                         </Modal>
                     )
