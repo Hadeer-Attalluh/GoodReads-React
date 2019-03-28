@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import AuthorsData from '../src/Data/Authers';
 import AuthorsAdminListing from '../src/FeaturedComponents/Admin/Auther/Listing';
+import UsersData from './Data/Users.json';
+import { SignUpForm } from './FeaturedComponents/UserForms/signup';
 
 import BooksData from '../src/Data/Books';
 import BooksDisplayListing from '../src/FeaturedComponents/Featured/Book/Listing';
@@ -14,11 +14,13 @@ class App extends Component {
     super();
     this.state = {
       Authors: AuthorsData.slice(),
+      Users: UsersData.slice(),
       Books: BooksData.slice(),
     }
     this.addAuthor = this.addAuthor.bind(this);
     this.editAuthor = this.editAuthor.bind(this);
     this.deleteAuthor = this.deleteAuthor.bind(this);
+    this.addUser = this.addUser.bind(this);
   }
 
 
@@ -39,7 +41,11 @@ class App extends Component {
     newAuthors.find(a => a.id === authorID).deleted = true
     this.setState({ Authors: [...newAuthors] });
   }
-
+  
+  addUser(user) {
+    const newUsers = this.state.Users.slice();
+    this.setState({Users: [...newUsers.concat(user)]});
+  }
 
   render() {
     const contextValue = {
@@ -49,9 +55,11 @@ class App extends Component {
       deleteAuthor: this.deleteAuthor,
 
       books: this.state.Books,
+      addUser: this.addUser,
     }
     return (
       <context.Provider value={contextValue}>
+      <SignUpForm/>
         {/* <AuthorsAdminListing /> */}
         {/* <BooksDisplayListing /> */}
         <BookDetails {...contextValue.books[1]} />
