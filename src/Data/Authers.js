@@ -1,7 +1,7 @@
 export default [
     {
         id: "1",
-        photo: "",
+        photo: "https://diygrantsonline.com.au/wp-content/uploads/2017/07/user4.png",
         "first-name": "Jane",
         "last-name": "Jacobs",
         birthdate: "",
