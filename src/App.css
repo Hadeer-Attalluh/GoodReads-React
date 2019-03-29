@@ -1,0 +1,56 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+fieldset,.userbooksfilter
+{
+  padding: 10px;
+  padding-left: 20px;
+  height:fit-content;
+  box-shadow: 0px 0px 0px 0px transparent;
+  border:.5px solid rgb(231, 230, 230);
+  margin-top: 20px;
+}
+.userbooksfilter
+{
+  height:30rem;
+
+}
+.search
+{
+border-radius: 20.5px;
+
+}
+UserNavBar
+{
+margin-bottom: 50px;
+}

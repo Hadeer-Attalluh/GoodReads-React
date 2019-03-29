@@ -32,6 +32,7 @@ export default class AuthorAdminCard extends React.Component {
                     value => (
                         <React.Fragment>
                             <ListGroup.Item as="li" key={this.props.id}>
+                          
                                 <Row className="no-gutters">
                                     <Col sm={1} className="d-inline"><h4 className="text-truncate">{this.props.id}</h4></Col>
                                     <Col sm={3} className="d-inline"><h4 className="text-truncate">{this.props.photo}</h4></Col>
