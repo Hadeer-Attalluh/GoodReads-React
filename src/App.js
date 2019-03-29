@@ -7,6 +7,8 @@ import UserHome from './FeaturedComponents/User/Home'
 
 import AuthorsData from '../src/Data/Authers';
 import AuthorsAdminListing from '../src/FeaturedComponents/Admin/Auther/Listing';
+import UsersData from './Data/Users.json';
+import { SignUpForm } from './FeaturedComponents/UserForms/signup';
 
 import BooksData from '../src/Data/Books';
 import UserBooksData from '../src/Data/UserBooks';
@@ -19,16 +21,18 @@ class App extends Component {
     super();
     this.state = {
       Authors: AuthorsData.slice(),
+      Users: UsersData.slice(),
       Books: BooksData.slice(),
       UserBooks: UserBooksData,
       FilteredUserBooks: UserBooksData,
-      UserBooksTableTitle:"All",
+      UserBooksTableTitle: "All",
 
     }
     this.addAuthor = this.addAuthor.bind(this);
     this.editAuthor = this.editAuthor.bind(this);
     this.deleteAuthor = this.deleteAuthor.bind(this);
     this.setFilteredUserBooks = this.setFilteredUserBooks.bind(this);
+    this.addUser = this.addUser.bind(this);
   }
 
 
@@ -49,11 +53,16 @@ class App extends Component {
     newAuthors.find(a => a.id === authorID).deleted = true
     this.setState({ Authors: [...newAuthors] });
   }
-  setFilteredUserBooks(userbooks,UserBooksTableTitle) {
+  setFilteredUserBooks(userbooks, UserBooksTableTitle) {
     const FilteredUserBooks = this.state.FilteredUserBooks.slice();
-    this.setState({ FilteredUserBooks: [...userbooks],UserBooksTableTitle:UserBooksTableTitle })
+    this.setState({ FilteredUserBooks: [...userbooks], UserBooksTableTitle: UserBooksTableTitle })
   }
 
+
+  addUser(user) {
+    const newUsers = this.state.Users.slice();
+    this.setState({ Users: [...newUsers.concat(user)] });
+  }
 
   render() {
     const contextValue = {
@@ -63,8 +72,10 @@ class App extends Component {
       deleteAuthor: this.deleteAuthor,
 
       books: this.state.Books,
-      UserBooksTableTitle:this.state.UserBooksTableTitle,
 
+      addUser: this.addUser,
+
+      UserBooksTableTitle: this.state.UserBooksTableTitle,
       setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
       FilteredUserBooks: this.state.FilteredUserBooks
@@ -77,8 +88,8 @@ class App extends Component {
           {/* <BooksDisplayListing /> */}
           {/* <BookDetails {...contextValue.books[1]} /> */}
           <Col>
-				<UserNavBar/>
-				</Col>
+            <UserNavBar />
+          </Col>
           <Router>
             <>
 
@@ -87,9 +98,11 @@ class App extends Component {
 
             </>
           </Router>
+          <SignUpForm />
+          {/* <AuthorsAdminListing /> */}
+          {/* <BooksDisplayListing /> */}
+          <BookDetails {...contextValue.books[1]} />
         </context.Provider>
-
-
       </>
     );
   }
