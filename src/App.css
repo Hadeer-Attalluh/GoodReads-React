@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +30,27 @@
   to {
     transform: rotate(360deg);
   }
+} */
+fieldset,.userbooksfilter
+{
+  padding: 10px;
+  padding-left: 20px;
+  height:fit-content;
+  box-shadow: 0px 0px 0px 0px transparent;
+  border:.5px solid rgb(231, 230, 230);
+  margin-top: 20px;
+}
+.userbooksfilter
+{
+  height:30rem;
+
+}
+.search
+{
+border-radius: 20.5px;
+
+}
+UserNavBar
+{
+margin-bottom: 50px;
 }
