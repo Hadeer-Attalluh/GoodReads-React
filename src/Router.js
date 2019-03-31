@@ -19,7 +19,7 @@ export default class Routing extends React.Component  {
 	render(){
 		return(
       <>   
-		    {/* //  <SignUpForm/> 
+		    {/* 
         //    <AdminPanel /> 
         //    <BooksAdminListing />
         //   <AuthorsAdminListing /> 
