@@ -1,6 +1,6 @@
 import React from 'react';
 import Pagination from 'react-bootstrap/Pagination';
-import PageItem from 'react-bootstrap/PageItem'
+
 
 
 // let active = 2;
@@ -13,7 +13,7 @@ import PageItem from 'react-bootstrap/PageItem'
 //   );
 // }
 
-const pagination = (props)=>{
+const DisplayPagination = (props)=>{
 	return(
   // <div>
 	// 	<Pagination>
@@ -41,4 +41,4 @@ const pagination = (props)=>{
 </Pagination>
 	)
 }
-export default pagination;
+export default DisplayPagination;

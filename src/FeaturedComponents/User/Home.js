@@ -6,38 +6,38 @@ import Col from 'react-bootstrap/Col'
 import UserBooksFilter from './Books/Filter';
 import UserBooksList from './Books/List';
 
-import pagination from './Pagination'
+import DisplayPagination from './Pagination'
 
 
 
 
 const UserHome = (props) => {
 	return (
-		<container>
+		<Container>
 		
-				
-				
-		
-				
-				
-			
 			<Row>
-				<Col sm={1}></Col>
+				{/* <Col sm={1}></Col> */}
 				<Col sm={2}>
 				
 					<UserBooksFilter />
 			
 				</Col>
-				<Col sm={8}>
+				<Col sm={10}>
 				<UserBooksList />
 				</Col>
-				<Col sm={1}></Col>
+				{/* <Col sm={1}></Col> */}
 
 			</Row>
 			<Row>
-				<pagination/>
+				<Col>
+				</Col>
+				<Col>
+					<DisplayPagination/>
+				</Col>
+				<Col>
+				</Col>
 				</Row>
-		</container>
+		</Container>
 	)
 }
 

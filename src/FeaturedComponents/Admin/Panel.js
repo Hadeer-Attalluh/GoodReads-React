@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Authors from './Author/Listing';
 import Books from './Books/Listing';
+import Categories from './Categories/List';
 export default class AdminPanel extends React.Component {
     constructor() {
         super();
@@ -17,7 +18,7 @@ export default class AdminPanel extends React.Component {
             <Container fluid={true} className="p-2">
                 <Tabs variant="tabs" ActiveKey={this.state.key} onSelect={key => this.setState({ key })}>
                     <Tab eventKey="category" title="Categories">
-                        
+                        <Categories/>
                     </Tab>
                     <Tab eventKey="books" title="Books">
                         <Books />
