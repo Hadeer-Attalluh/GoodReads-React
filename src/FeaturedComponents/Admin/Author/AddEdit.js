@@ -79,7 +79,7 @@ export default class AddEditAuthorForm extends React.Component {
           <context.Consumer>
               {
                     value => (
-                      <Modal {...this.props}>
+                      <Modal show={this.props.show} onHide={this.props.onHide}>
                           <Modal.Header closeButton>
                               <Modal.Title>{this.props.editmode ? 'Edit Author' : 'Add New Author'}</Modal.Title>
                             </Modal.Header>

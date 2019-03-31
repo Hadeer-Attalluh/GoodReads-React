@@ -39,17 +39,14 @@ class App extends Component {
     this.addUser = this.addUser.bind(this);
   }
 
-
   addAuthor(author) {
     const newAuthors = this.state.Authors.slice();
     this.setState({ Authors: [...newAuthors.concat(author)] });
   }
   editAuthor(author) {
-    console.log(author);
     const newAuthors = this.state.Authors.slice();
     let authorEdited = newAuthors.findIndex(a => a.id === author.id);
     newAuthors[authorEdited] = author;
-
     this.setState({ Authors: [...newAuthors] });
   }
   deleteAuthor(authorID) {
@@ -59,15 +56,14 @@ class App extends Component {
   }
 
   addBook(book) {
-    // const newAuthors = this.state.Authors.slice();
-    // this.setState({ Authors: [...newAuthors.concat(author)] });
+    const newBooks = this.state.Books.slice();
+    this.setState({ Books: [...newBooks.concat(book)] });
   }
   editBook(book) {
-    // console.log(author);
-    // const newAuthors = this.state.Authors.slice();
-    // let authorEdited = newAuthors.findIndex(a => a.id === author.id);
-    // newAuthors[authorEdited] = author;
-    // this.setState({ Authors: [...newAuthors] });
+    const newBooks = this.state.Books.slice();
+    let bookEdited = newBooks.findIndex(b => b.id === book.id);
+    newBooks[bookEdited] = book;
+    this.setState({ Books: [...newBooks.concat(book)] });
   }
   deleteBook(bookID) {
     const newbooks = this.state.Books.slice();
@@ -79,7 +75,6 @@ class App extends Component {
     const FilteredUserBooks = this.state.FilteredUserBooks.slice();
     this.setState({ FilteredUserBooks: [...userbooks], UserBooksTableTitle: UserBooksTableTitle })
   }
-
 
   addUser(user) {
     const newUsers = this.state.Users.slice();

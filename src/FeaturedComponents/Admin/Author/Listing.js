@@ -42,7 +42,7 @@ export default class AuthorsAdminListing extends React.Component {
                                                 <Col sm={2}><h4>Actions</h4></Col>
                                             </Row>
                                         </ListGroup.Item>
-                                        {value.authors.filter(a => a.deleted === false).map(a => <AuthorAdminCard {...a} />)}
+                                        {value.authors.filter(a => a.deleted === false).map(a => <AuthorAdminCard {...a} key={a.id} />)}
                                     </ListGroup>
                                 </Col>
                             </Row>

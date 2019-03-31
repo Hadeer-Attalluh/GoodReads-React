@@ -42,7 +42,7 @@ export default class BooksAdminListing extends React.Component {
                                                 <Col sm={2}><h4>Actions</h4></Col>
                                             </Row>
                                         </ListGroup.Item>
-                                        {value.books.filter(b => b.deleted === false).map(b => <BookAdminCard {...b} />)}
+                                        {value.books.filter(b => b.deleted === false).map(b => <BookAdminCard {...b} key={b.id} />)}
                                     </ListGroup>
                                 </Col>
                             </Row>

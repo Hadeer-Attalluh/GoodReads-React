@@ -70,7 +70,7 @@ export default class AddEditBookForm extends React.Component {
             <context.Consumer>
                 {
                     value => (
-                        <Modal {...this.props}>
+                        <Modal show={this.props.show} onHide={this.props.onHide}>
                             <Modal.Header closeButton>
                                 <Modal.Title>{this.props.editmode ? "Edit Book" : "Add New Book"}</Modal.Title>
                             </Modal.Header>

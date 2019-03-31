@@ -1,7 +1,5 @@
 import React from 'react';
 import { Tabs, Container, Tab } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-
 
 import Authors from './Author/Listing';
 import Books from './Books/Listing';
@@ -16,7 +14,7 @@ export default class AdminPanel extends React.Component {
     render() {
         return (
             <Container fluid={true} className="p-2">
-                <Tabs variant="tabs" ActiveKey={this.state.key} onSelect={key => this.setState({ key })}>
+                <Tabs variant="tabs" activekey={this.state.key} onSelect={key => this.setState({ key })}>
                     <Tab eventKey="category" title="Categories">
                         <Categories/>
                     </Tab>

@@ -14,7 +14,7 @@ export default class AdminCategoriesList extends React.Component {
         {
           value => (
            <Container>
-						 <h3><i class="fas fa-plus-circle"></i></h3>
+						 <h3><i className="fas fa-plus-circle"></i></h3>
 						<Table striped bordered hover responsive  >
 						<thead>
 						<tr  className=" text-center" >
