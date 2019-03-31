@@ -5,8 +5,8 @@ import UserNavBar from './FeaturedComponents/User/Nav';
 import Col from 'react-bootstrap/Col';
 import UserHome from './FeaturedComponents/User/Home'
 
-import AuthorsData from '../src/Data/Authers';
-import AuthorsAdminListing from '../src/FeaturedComponents/Admin/Auther/Listing';
+import AuthorsData from '../src/Data/Authors';
+import AuthorsAdminListing from '../src/FeaturedComponents/Admin/Author/Listing';
 import UsersData from './Data/Users.json';
 
 import { SignUpForm } from './FeaturedComponents/UserForms/signup';
@@ -117,26 +117,26 @@ class App extends Component {
           {/* <UserHome/> */}
           {/* <SignUpForm/> */}
           <AdminPanel />
-          <BooksAdminListing />
+          {/* <BooksAdminListing /> */}
 
           {/* <AuthorsAdminListing /> */}
           {/* <BooksDisplayListing /> */}
           {/* <BookDetails {...contextValue.books[1]} /> */}
-          <Col>
+          {/* <Col>
             <UserNavBar />
           </Col>
           <Router>
-            <>
+            <> */}
 
-              <Route exact path="/" component={UserHome} />
+              {/* <Route exact path="/" component={UserHome} />
               <Route exact path="/books" component={BooksDisplayListing} />
 
             </>
           </Router>
-          <SignUpForm />
+          <SignUpForm /> */}
           {/* <AuthorsAdminListing /> */}
           {/* <BooksDisplayListing /> */}
-          <BookDetails {...contextValue.books[1]} />
+          {/* <BookDetails {...contextValue.books[1]} /> */}
         </context.Provider>
       </>
     );

@@ -1,27 +1,31 @@
 import React from 'react';
-import { Nav, Container, Navbar } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
+import { Tabs, Container, Tab } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
+
+import Authors from './Author/Listing';
+import Books from './Books/Listing';
 export default class AdminPanel extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            key: 'category',
+        }
+    }
     render() {
         return (
             <Container fluid={true} className="p-2">
-                <Nav variant="tabs" defaultActiveKey="/home">
-                    <Nav.Item>
-                        <Nav.Link href="/home">Categories</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-1">Books</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="" >Authors</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-                <Router>
-                    <Switch>
-                        <Route exact path=""/>
-                    </Switch>
-                </Router>
+                <Tabs variant="tabs" ActiveKey={this.state.key} onSelect={key => this.setState({ key })}>
+                    <Tab eventKey="category" title="Categories">
+                        
+                    </Tab>
+                    <Tab eventKey="books" title="Books">
+                        <Books />
+                    </Tab>
+                    <Tab eventKey="authors" title="Authors">
+                        <Authors />
+                    </Tab>
+                </Tabs>
             </Container>
 
         );
