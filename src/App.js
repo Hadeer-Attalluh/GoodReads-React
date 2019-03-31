@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+
 import './App.css';
-import UserNavBar from './FeaturedComponents/User/Nav';
+
 import Col from 'react-bootstrap/Col';
-import UserHome from './FeaturedComponents/User/Home'
-
-import AuthorsData from '../src/Data/Authers';
-import AuthorsAdminListing from '../src/FeaturedComponents/Admin/Auther/Listing';
+import Routing from'./Router'
+//Data
+import AuthorsData from '../src/Data/Authors';
 import UsersData from './Data/Users.json';
-
-import { SignUpForm } from './FeaturedComponents/UserForms/signup';
-
 import BooksData from '../src/Data/Books';
 import UserBooksData from '../src/Data/UserBooks';
-import BooksDisplayListing from '../src/FeaturedComponents/Featured/Book/Listing';
-import BookDetails from '../src/FeaturedComponents/Featured/Book/Details';
+import CategoriesData from '../src/Data/Categories';
 
-import AdminPanel from './FeaturedComponents/Admin/Panel';
-import BooksAdminListing from './FeaturedComponents/Admin/Books/Listing';
 
 export const context = React.createContext();
 
@@ -25,9 +19,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      //Admin
       Authors: AuthorsData.slice(),
       Users: UsersData.slice(),
       Books: BooksData.slice(),
+      Categories:CategoriesData,
+      //user
       UserBooks: UserBooksData,
       FilteredUserBooks: UserBooksData,
       UserBooksTableTitle: "All",
@@ -94,18 +91,21 @@ class App extends Component {
 
   render() {
     const contextValue = {
+      //admin authors
       authors: this.state.Authors,
       addAuthor: this.addAuthor,
       editAuthor: this.editAuthor,
       deleteAuthor: this.deleteAuthor,
-
+      //admin books
       books: this.state.Books,
       addBook: this.addBook,
       editBook: this.editBook,
       deleteBook: this.deleteBook,
+      //admin categories
+      Categories:this.state.Categories,
 
       addUser: this.addUser,
-
+      //user
       UserBooksTableTitle: this.state.UserBooksTableTitle,
       setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
@@ -114,29 +114,7 @@ class App extends Component {
     return (
       <>
         <context.Provider value={contextValue}>
-          {/* <UserHome/> */}
-          {/* <SignUpForm/> */}
-          <AdminPanel />
-          <BooksAdminListing />
-
-          {/* <AuthorsAdminListing /> */}
-          {/* <BooksDisplayListing /> */}
-          {/* <BookDetails {...contextValue.books[1]} /> */}
-          <Col>
-            <UserNavBar />
-          </Col>
-          <Router>
-            <>
-
-              <Route exact path="/" component={UserHome} />
-              <Route exact path="/books" component={BooksDisplayListing} />
-
-            </>
-          </Router>
-          <SignUpForm />
-          {/* <AuthorsAdminListing /> */}
-          {/* <BooksDisplayListing /> */}
-          <BookDetails {...contextValue.books[1]} />
+            <Routing/>
         </context.Provider>
       </>
     );

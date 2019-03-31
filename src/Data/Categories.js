@@ -1,12 +1,16 @@
 export default [
     {
         id: "1",
-        name: "Classics"
+        name: "Culture"
     }, {
         id: "2",
-        name: "Thriller"
+        name: "Sport"
     }, {
         id: "3",
-        name: "Sci-Fi"
+        name: "Economics"
+    },
+    {
+        id: "4",
+        name: "Technology"
     },
 ]

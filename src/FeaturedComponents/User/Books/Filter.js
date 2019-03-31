@@ -36,8 +36,8 @@ export default class UserBooksFilter extends React.Component {
 		console.log(e);
 		console.log(e.UserBooks);
 		const userbooks=e.UserBooks.slice();
-		const newuserbooks=userbooks.filter(a=>a.shelve==="wanted to read")
-		e.setFilteredUserBooks(newuserbooks,"currently reading");
+		const newuserbooks=userbooks.filter(a=>a.shelve==="currently reading")
+		e.setFilteredUserBooks(newuserbooks,"Currently Reading");
 		}
 
 	handleclickWantedToRead=(e)=>(value)=>
@@ -45,7 +45,7 @@ export default class UserBooksFilter extends React.Component {
 		console.log(e);
 		console.log(e.UserBooks);
 		const userbooks=e.UserBooks.slice();
-		const newuserbooks=userbooks.filter(a=>a.shelve==="wanted to read ")
+		const newuserbooks=userbooks.filter(a=>a.shelve==="wanted to read")
 		e.setFilteredUserBooks(newuserbooks,"Wanted To Read");
 		}
 

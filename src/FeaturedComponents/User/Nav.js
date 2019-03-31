@@ -8,7 +8,7 @@ import FormControl from 'react-bootstrap/FormControl'
 const UserNavBar = (props) => {
 return(
 
-<Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top" >
+<Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top" className="Navbar" >
  
 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 <Navbar.Collapse id="responsive-navbar-nav">
