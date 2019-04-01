@@ -10,6 +10,8 @@ import BookDetails from '../src/FeaturedComponents/Featured/Book/Details';
 //Admin
 import AdminPanel from './FeaturedComponents/Admin/Panel';
 import AdminCategoriesAddEditForm from '../src/FeaturedComponents/Admin/Categories/AddEditForm';
+import { LoginForm } from './FeaturedComponents/UserForms/login';
+import CategoriesListing from './FeaturedComponents/Featured/Categories/Listing';
 
 export default class Routing extends React.Component {
   render() {
@@ -24,7 +26,10 @@ export default class Routing extends React.Component {
           <Switch>
             <Route exact path="/" component={UserHome} />
             <Route exact path="/books" component={BooksDisplayListing} />
-            <Route exact path="/admin" component={AdminPanel} />
+            {/* <Route exact path="/admin" component={AdminPanel} /> */}
+            {/* <Route exact path="/admin" component={LoginForm} /> */}
+            <Route exact path="/categories" component={CategoriesListing} />
+
           </Switch>
         </Router>
       </>

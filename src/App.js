@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Routing from './Router'
 //Data
 import AuthorsData from '../src/Data/Authors';
-import UsersData from './Data/Users.json';
+import UsersData from './Data/Users.js';
 import BooksData from '../src/Data/Books';
 import UserBooksData from '../src/Data/UserBooks';
 import CategoriesData from '../src/Data/Categories';
