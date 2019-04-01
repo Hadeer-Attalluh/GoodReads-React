@@ -27,7 +27,8 @@ export default class Routing extends React.Component {
             <Route exact path="/" component={UserHome} />
             <Route exact path="/books" component={BooksDisplayListing} />
             <Route exact path="/admin" component={AdminPanel} />
-            {/* <Route exact path="/admin" component={LoginForm} /> */}
+            <Route exact path="/signup" component={SignUpForm} />
+            <Route exact path="/login" component={LoginForm} />
             <Route exact path="/categories" component={CategoriesListing} />
           </Switch>
         </Router>

@@ -37,6 +37,7 @@ class App extends Component {
 
     this.setFilteredUserBooks = this.setFilteredUserBooks.bind(this);
     this.addUser = this.addUser.bind(this);
+    this.checkUser = this.checkUser.bind(this);
   }
 
   addAuthor(author) {
@@ -81,6 +82,19 @@ class App extends Component {
     this.setState({ Users: [...newUsers.concat(user)] });
   }
 
+  checkUser(loginuser) {
+    const allUsers = this.state.Users.slice();
+    let filteredUsers = allUsers.filter(user => {
+      return user.email === loginuser.email && user.password === Number(loginuser.password);
+    });
+    if (filteredUsers.length > 0) {
+      let user = filteredUsers[0];
+      console.log(user);
+    } else {
+      console.log('user does not exist');
+    }
+  }
+
   render() {
     const contextValue = {
       //admin authors
@@ -97,11 +111,12 @@ class App extends Component {
       Categories: this.state.Categories,
 
       addUser: this.addUser,
+      checkUser: this.checkUser,
       //user
       UserBooksTableTitle: this.state.UserBooksTableTitle,
       setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
-      FilteredUserBooks: this.state.FilteredUserBooks
+      FilteredUserBooks: this.state.FilteredUserBooks,
     }
     return (
       <>
