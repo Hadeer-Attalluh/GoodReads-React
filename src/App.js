@@ -63,7 +63,7 @@ class App extends Component {
     const newBooks = this.state.Books.slice();
     let bookEdited = newBooks.findIndex(b => b.id === book.id);
     newBooks[bookEdited] = book;
-    this.setState({ Books: [...newBooks.concat(book)] });
+    this.setState({ Books: [...newBooks] });
   }
   deleteBook(bookID) {
     const newbooks = this.state.Books.slice();

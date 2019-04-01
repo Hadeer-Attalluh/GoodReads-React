@@ -1,4 +1,4 @@
-import { Form, Button, Modal ,Col} from 'react-bootstrap';
+import { Form, Button, Modal, Col } from 'react-bootstrap';
 import React from 'react';
 
 import SimpleSchema from 'simpl-schema';
@@ -9,6 +9,7 @@ import uuidv1 from 'uuid/v1';
 export default class AddEditBookForm extends React.Component {
     constructor(props) {
         super(props);
+        //initial values from end points when mounting??
         if (this.props.editmode) {
             this.state = {
                 title: this.props.title,
@@ -19,21 +20,22 @@ export default class AddEditBookForm extends React.Component {
         }
         else {
             this.state = {
-                title: this.props.title,
-                authorId: 0,
-                categoryId: 0,
-                cover: this.props.cover,
+                title: "",
+                authorId: "0",
+                categoryId: "0",
+                cover: "",
             }
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
     handleSubmit = (actionHandler) => (e) => {
         e.preventDefault();
         const formValidatorCtx = new SimpleSchema({
             title: { type: String, required: true, min: 1, max: 50 },
-            categoryId: { type: SimpleSchema.Integer, required: true },
-            authorId: { type: SimpleSchema.Integer, required: true },
-            cover: { type: String }, // has  an issue
+            categoryId: { type: String, required: true },
+            authorId: { type: String, required: true },
+            cover: { type: String }, // has  an issue if regex
         }, { requiredByDefault: false }).newContext();
         // formValidatorCtx.validate(this.state).clean(this.state,{removeEmptyStrings: true});
         formValidatorCtx.validate(this.state);
@@ -51,10 +53,9 @@ export default class AddEditBookForm extends React.Component {
                 actionHandler(newBook); // edit function
             }
             else {
-
                 actionHandler(newBook); // add function
             }
-            this.setState({ title: "", authorId: 0, categoryId: 0, cover: "" });
+            this.setState({ title: "", authorId: "0", categoryId: "0", cover: "" });
             this.props.onHide();
         }
         else {
@@ -64,8 +65,13 @@ export default class AddEditBookForm extends React.Component {
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
+    handleSelect(e) {
+        debugger;
+        console.log(e.nativeEvent.target);
+        const index = e.nativeEvent.target.selectedIndex;
+        this.setState({ [e.nativeEvent.target.name]: e.nativeEvent.target.value })
+    }
     render() {
-        // console.log()
         return (
             <context.Consumer>
                 {
@@ -82,26 +88,26 @@ export default class AddEditBookForm extends React.Component {
                                     </Form.Group>
 
                                     <Form.Group as={Col}>
-                                        <Form.Label>Book Name</Form.Label>
-                                        <Form.Control as="select">
-                                            <option>Read</option>
-                                            <option>Currently Reading</option>
-                                            <option>Want To Read</option>
+                                        <Form.Label>Category</Form.Label>
+                                        <Form.Control as="select" name="categoryId" onChange={this.handleSelect} value={this.state.categoryId}>
+                                            {
+                                                value.Categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)
+                                            }
                                         </Form.Control>
                                     </Form.Group>
 
                                     <Form.Group as={Col}>
-                                        <Form.Label>Book Name</Form.Label>
-                                        <Form.Control as="select">
-                                            <option>Read</option>
-                                            <option>Currently Reading</option>
-                                            <option>Want To Read</option>
+                                        <Form.Label>Author</Form.Label>
+                                        <Form.Control as="select" name="authorId" onChange={this.handleSelect} value={this.state.authorId}>
+                                            {
+                                                value.authors.map(a => <option key={a.id} value={a.id}>{a['first-name'] + ' ' + a['last-name']}</option>)
+                                            }
                                         </Form.Control>
                                     </Form.Group>
 
                                     <Form.Group controlId="photoURL">
                                         <Form.Label>Book Cover</Form.Label>
-                                        <Form.Control placeholder="Enter Photo URL" name="photo" value={this.state.cover} onChange={this.handleChange} />
+                                        <Form.Control placeholder="Enter Photo URL" name="cover" value={this.state.cover} onChange={this.handleChange} />
                                     </Form.Group>
 
                                 </Form>
