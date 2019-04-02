@@ -89,11 +89,11 @@ class App extends Component {
 
   checkUser(loginuser) {
     const allUsers = this.state.Users.slice();
-    let filteredUsers = allUsers.filter(user => {
+    let filteredUsers = allUsers.find(user => {
       return user.email === loginuser.email && user.password === Number(loginuser.password);
     });
-    if (filteredUsers.length > 0) {
-      let user = filteredUsers[0];
+    if (filteredUsers !== undefined) {
+      let user = filteredUsers;
       console.log(user);
     } else {
       console.log('user does not exist');
