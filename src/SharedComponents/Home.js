@@ -5,7 +5,6 @@ import { SignUpForm } from '../FeaturedComponents/UserForms/signup';
 const Home = () => {
     return (
         <>
-            <UserNavBar />
             <SignUpForm />
         </>
     )

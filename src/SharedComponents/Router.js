@@ -14,17 +14,21 @@ import CategoriesListing from '../FeaturedComponents/Featured/Categories/Listing
 export default class Routing extends React.Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          {/* <Route exact path="/" component={UserHome} /> */}
-          <Route exact path="/books" component={BooksDisplayListing} />
-          <Route exact path="/admin" component={AdminPanel} />
-          <Route exact path="/signup" component={SignUpForm} />
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/categories" component={CategoriesListing} />
-        </Switch>
-      </Router>
+      <>
+        <Router>
+          <UserNavBar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/userProfile" component={UserHome} />
+            <Route exact path="/books" component={BooksDisplayListing} />
+            <Route exact path="/admin" component={AdminPanel} />
+            <Route exact path="/signup" component={SignUpForm} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/categories" component={CategoriesListing} />
+          </Switch>
+        </Router>
+
+      </>
     )
   }
 }
