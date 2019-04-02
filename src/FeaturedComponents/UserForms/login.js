@@ -25,7 +25,7 @@ export class LoginForm extends Component {
             password: this.state.password,
         }
         checkUser(user);
-        if (user.email === "Sincere@april.biz"){
+        if (user.email === "Sincere@april.biz") {
             this.props.history.push('/admin');
         }
         // else{
@@ -49,7 +49,7 @@ export class LoginForm extends Component {
                             </Form.Group>
                             <Button className="submit-btn" type="submit">
                                 Login
-                             </Button>
+                            </Button>
                         </Form>
                     )
                 }

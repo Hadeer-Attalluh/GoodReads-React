@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import uuidv1 from 'uuid/v1';
+import UserNavBar from '../User/Nav';
 import { context } from '../../App';
 
 export class SignUpForm extends Component {
@@ -68,6 +69,8 @@ export class SignUpForm extends Component {
             <context.Consumer>
                 {
                     value => (
+                        <>
+                        <UserNavBar/>
                         <Form className="signup bg-gold form-border" onSubmit={this.handleSubmit(value.addUser)} key={this.state.id}>
                             <h3 className='text-center text-white'>New Here? Create A free account!</h3>
                             <Form.Row>
@@ -104,6 +107,7 @@ export class SignUpForm extends Component {
                                 Submit
                             </Button>
                         </Form>
+                        </>
                     )}
             </context.Consumer>
         );
