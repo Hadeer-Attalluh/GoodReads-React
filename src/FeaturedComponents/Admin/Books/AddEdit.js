@@ -84,16 +84,16 @@ export default class AddEditBookForm extends React.Component {
                                         <Form.Label>Category</Form.Label>
                                         <Form.Control as="select" name="categoryId" onChange={this.handleChange} value={this.state.categoryId}>
                                             {
-                                                value.Categories.filter(c=>c.deleted === false).map(c => <option key={c.id} value={c.id}>{c.name}</option>)
+                                                value.Categories.filter(c => c.deleted === false).map(c => <option key={c.id} value={c.id}>{c.name}</option>)
                                             }
                                         </Form.Control>
                                     </Form.Group>
 
                                     <Form.Group as={Col}>
                                         <Form.Label>Author</Form.Label>
-                                        <Form.Control as="select" name="authorId" onChange={this.handleSelect} value={this.state.authorId}>
+                                        <Form.Control as="select" name="authorId" onChange={this.handleChange} value={this.state.authorId}>
                                             {
-                                                value.authors.filter(a=>a.deleted === false).map(a => <option key={a.id} value={a.id}>{a['first-name'] + ' ' + a['last-name']}</option>)
+                                                value.authors.filter(a => a.deleted === false).map(a => <option key={a.id} value={a.id}>{a['first-name'] + ' ' + a['last-name']}</option>)
                                             }
                                         </Form.Control>
                                     </Form.Group>
