@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import UserNavBar from './Nav';
 //user
+import Home from '../SharedComponents/Home';
 import UserHome from '../FeaturedComponents/User/Home';
 import BooksDisplayListing from '../FeaturedComponents/Featured/Book/Listing';
 //Admin
@@ -15,7 +16,8 @@ export default class Routing extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={UserHome} />
+          <Route exact path="/" component={Home}/>
+          {/* <Route exact path="/" component={UserHome} /> */}
           <Route exact path="/books" component={BooksDisplayListing} />
           <Route exact path="/admin" component={AdminPanel} />
           <Route exact path="/signup" component={SignUpForm} />
