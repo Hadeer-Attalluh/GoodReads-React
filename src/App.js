@@ -12,8 +12,8 @@ import CategoriesData from '../src/Data/Categories';
 export const context = React.createContext();
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       //Admin
       Authors: AuthorsData.slice(),
@@ -24,7 +24,7 @@ class App extends Component {
       UserBooks: UserBooksData,
       FilteredUserBooks: UserBooksData,
       UserBooksTableTitle: "All",
-
+      isAdmin: false,
     }
     this.addAuthor = this.addAuthor.bind(this);
     this.editAuthor = this.editAuthor.bind(this);
@@ -57,18 +57,24 @@ class App extends Component {
 
   addBook(book) {
     const newBooks = this.state.Books.slice();
-    this.setState({ Books: [...newBooks.concat(book)] });
+    this.setState({ Books: [...newBooks.concat(book)] }, () => {
+      // BooksData = [...this.state.Books];
+    });
   }
   editBook(book) {
     const newBooks = this.state.Books.slice();
     let bookEdited = newBooks.findIndex(b => b.id === book.id);
     newBooks[bookEdited] = book;
-    this.setState({ Books: [...newBooks] });
+    this.setState({ Books: [...newBooks] }, () => {
+      // BooksData = [...this.state.Books];
+    });
   }
   deleteBook(bookID) {
     const newbooks = this.state.Books.slice();
     newbooks.find(b => b.id === bookID).deleted = true
-    this.setState({ Books: [...newbooks] });
+    this.setState({ Books: [...newbooks] }, () => {
+      // BooksData = [...this.state.Books];
+    });
   }
 
   setFilteredUserBooks(userbooks, UserBooksTableTitle) {
@@ -88,7 +94,9 @@ class App extends Component {
     });
     if (filteredUsers !== undefined) {
       let user = filteredUsers;
-      console.log(user);
+      console.log(user.admin);
+      this.setState({ isAdmin: user.admin });
+
     } else {
       console.log('user does not exist');
     }
@@ -116,6 +124,7 @@ class App extends Component {
       setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
       FilteredUserBooks: this.state.FilteredUserBooks,
+      isAdmin: this.state.isAdmin,
     }
     return (
       <>

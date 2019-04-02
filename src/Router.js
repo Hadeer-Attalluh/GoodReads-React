@@ -6,7 +6,7 @@ import UserNavBar from './FeaturedComponents/User/Nav';
 import { SignUpForm } from './FeaturedComponents/UserForms/signup';
 import UserHome from './FeaturedComponents/User/Home'
 import BooksDisplayListing from '../src/FeaturedComponents/Featured/Book/Listing';
-import BookDetails from '../src/FeaturedComponents/Featured/Book/Details';
+import BookDetails from './FeaturedComponents/Featured/Book/Details';
 //Admin
 import AdminPanel from './FeaturedComponents/Admin/Panel';
 import AdminCategoriesAddEditForm from '../src/FeaturedComponents/Admin/Categories/AddEditForm';
@@ -17,14 +17,10 @@ export default class Routing extends React.Component {
   render() {
     return (
       <>
-        {/* //  <SignUpForm/> 
-          <AdminCategoriesList/> */}
-        {/* <AdminCategoriesAddEditForm/> */}
-        {/* //   <BookDetails {...contextValue.books[1]} />  */}
-        {/* <UserNavBar /> */}
         <Router>
           <Switch>
             <Route exact path="/" component={UserHome} />
+            <Route exact path="/books/:bookId" component={AdminPanel} />
             <Route exact path="/books" component={BooksDisplayListing} />
             <Route exact path="/admin" component={AdminPanel} />
             <Route exact path="/signup" component={SignUpForm} />

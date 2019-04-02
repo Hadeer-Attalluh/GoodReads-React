@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardDeck, Container,Col } from 'react-bootstrap';
+import { CardDeck, Container, Col } from 'react-bootstrap';
 import { context } from '../../../App';
 
 import BookDisplayCard from './Card';
@@ -11,7 +11,7 @@ export default class BookDisplayListing extends React.Component {
                     value => (
                         <Container fluid={true}>
                             <CardDeck>
-                                {value.books.map(b => <Col sm={3}><BookDisplayCard {...b} /></Col>)}
+                                {value.books.filter(b => !b.deleted).map(b => <Col sm={3} key={b.id}><BookDisplayCard {...b} /></Col>)}
                             </CardDeck>
                         </Container>
                     )
