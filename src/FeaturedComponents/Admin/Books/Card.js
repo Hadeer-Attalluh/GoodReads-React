@@ -1,3 +1,4 @@
+/* eslint-disable lines-between-class-members */
 import React from 'react';
 import { ListGroup, Row, Col } from 'react-bootstrap';
 
@@ -10,8 +11,7 @@ export default class BookAdminCard extends React.Component {
         super();
         this.state = {
             showEditModal: false,
-        }
-
+        };
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
     }
@@ -19,7 +19,7 @@ export default class BookAdminCard extends React.Component {
         this.setState({ showEditModal: false });
     }
     handleShow = () => {
-        this.setState({ showEditModal: true })
+        this.setState({ showEditModal: true });
     }
     handleDelete = (deleteHandler) => () => {
         deleteHandler(this.props.id);
@@ -37,15 +37,15 @@ export default class BookAdminCard extends React.Component {
                                     <Col sm={2} className="d-inline"><h4 className="text-truncate">{this.props.title}</h4></Col>
                                     <Col sm={2} className="d-inline"><h4 className="text-truncate">{this.props.categoryId}</h4></Col>
                                     <Col sm={2} className="d-inline"><h4 className="text-truncate">{this.props.authorId}</h4></Col>
-                                    <Col sm={1}><i className="fas fa-edit" onClick={this.handleShow}></i></Col>
-                                    <Col sm={1}><i className="fas fa-trash-alt" onClick={this.handleDelete(value.deleteBook)}></i></Col>
+                                    <Col sm={1}><i className="fas fa-edit" onClick={this.handleShow} /></Col>
+                                    <Col sm={1}><i className="fas fa-trash-alt" onClick={this.handleDelete(value.deleteBook)} /></Col>
                                 </Row>
                             </ListGroup.Item>
-                            <EditBookForm show={this.state.showEditModal} onHide={this.handleClose} editmode={true} {...this.props} />
+                            {this.state.showEditModal && <EditBookForm show={this.state.showEditModal} onHide={this.handleClose} editmode {...this.props} />}
                         </React.Fragment>
                     )
                 }
             </context.Consumer>
-        )
+        );
     }
 }

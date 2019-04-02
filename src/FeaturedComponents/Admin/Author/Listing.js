@@ -28,7 +28,7 @@ export default class AuthorsAdminListing extends React.Component {
                             <Row className="no-gutters m-1 d-flex flex-row-reverse">
                                 <Button className="align-self-end" onClick={this.handleShow}><i className="fas fa-user-plus"></i></Button>
                             </Row>
-                            <AddAuthorForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false}/>
+                            {this.state.showAddModal && <AddAuthorForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false}/>}
                             <Row className="no-gutters m-1">
                                 <Col sm={12}>
                                     <ListGroup>
@@ -42,7 +42,7 @@ export default class AuthorsAdminListing extends React.Component {
                                                 <Col sm={2}><h4>Actions</h4></Col>
                                             </Row>
                                         </ListGroup.Item>
-                                        {value.authors.filter(a => a.deleted === false).map(a => <AuthorAdminCard {...a} />)}
+                                        {value.authors.filter(a => a.deleted === false).map(a => <AuthorAdminCard {...a} key={a.id} />)}
                                     </ListGroup>
                                 </Col>
                             </Row>

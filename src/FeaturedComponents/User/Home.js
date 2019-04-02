@@ -8,22 +8,16 @@ import UserBooksList from './Books/List';
 
 import DisplayPagination from './Pagination'
 
-
-
-
 const UserHome = (props) => {
 	return (
 		<Container>
-		
 			<Row>
 				{/* <Col sm={1}></Col> */}
 				<Col sm={2}>
-				
 					<UserBooksFilter />
-			
 				</Col>
 				<Col sm={10}>
-				<UserBooksList />
+					<UserBooksList />
 				</Col>
 				{/* <Col sm={1}></Col> */}
 
@@ -32,11 +26,11 @@ const UserHome = (props) => {
 				<Col sm={6}>
 				</Col>
 				<Col sm={4}>
-					<DisplayPagination/>
+					<DisplayPagination />
 				</Col >
 				<Col sm={6}>
 				</Col>
-				</Row>
+			</Row>
 		</Container>
 	)
 }

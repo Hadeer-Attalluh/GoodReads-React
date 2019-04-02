@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Routing from'./FeaturedComponents/Featured/Router'
+import Routing from '../src/SharedComponents/Router'
 //Data
 import AuthorsData from '../src/Data/Authors';
-import UsersData from './Data/Users.json';
+import UsersData from './Data/Users.js';
 import BooksData from '../src/Data/Books';
 import UserBooksData from '../src/Data/UserBooks';
 import CategoriesData from '../src/Data/Categories';
-
 
 export const context = React.createContext();
 
@@ -20,7 +19,7 @@ class App extends Component {
       Authors: AuthorsData.slice(),
       Users: UsersData.slice(),
       Books: BooksData.slice(),
-      Categories:CategoriesData,
+      Categories: CategoriesData,
       //user
       UserBooks: UserBooksData,
       FilteredUserBooks: UserBooksData,
@@ -37,19 +36,17 @@ class App extends Component {
 
     this.setFilteredUserBooks = this.setFilteredUserBooks.bind(this);
     this.addUser = this.addUser.bind(this);
+    this.checkUser = this.checkUser.bind(this);
   }
-
 
   addAuthor(author) {
     const newAuthors = this.state.Authors.slice();
     this.setState({ Authors: [...newAuthors.concat(author)] });
   }
   editAuthor(author) {
-    console.log(author);
     const newAuthors = this.state.Authors.slice();
     let authorEdited = newAuthors.findIndex(a => a.id === author.id);
     newAuthors[authorEdited] = author;
-
     this.setState({ Authors: [...newAuthors] });
   }
   deleteAuthor(authorID) {
@@ -59,15 +56,14 @@ class App extends Component {
   }
 
   addBook(book) {
-    // const newAuthors = this.state.Authors.slice();
-    // this.setState({ Authors: [...newAuthors.concat(author)] });
+    const newBooks = this.state.Books.slice();
+    this.setState({ Books: [...newBooks.concat(book)] });
   }
   editBook(book) {
-    // console.log(author);
-    // const newAuthors = this.state.Authors.slice();
-    // let authorEdited = newAuthors.findIndex(a => a.id === author.id);
-    // newAuthors[authorEdited] = author;
-    // this.setState({ Authors: [...newAuthors] });
+    const newBooks = this.state.Books.slice();
+    let bookEdited = newBooks.findIndex(b => b.id === book.id);
+    newBooks[bookEdited] = book;
+    this.setState({ Books: [...newBooks] });
   }
   deleteBook(bookID) {
     const newbooks = this.state.Books.slice();
@@ -80,10 +76,22 @@ class App extends Component {
     this.setState({ FilteredUserBooks: [...userbooks], UserBooksTableTitle: UserBooksTableTitle })
   }
 
-
   addUser(user) {
     const newUsers = this.state.Users.slice();
     this.setState({ Users: [...newUsers.concat(user)] });
+  }
+
+  checkUser(loginuser) {
+    const allUsers = this.state.Users.slice();
+    let filteredUsers = allUsers.filter(user => {
+      return user.email === loginuser.email && user.password === Number(loginuser.password);
+    });
+    if (filteredUsers.length > 0) {
+      let user = filteredUsers[0];
+      console.log(user);
+    } else {
+      console.log('user does not exist');
+    }
   }
 
   render() {
@@ -99,19 +107,20 @@ class App extends Component {
       editBook: this.editBook,
       deleteBook: this.deleteBook,
       //admin categories
-      Categories:this.state.Categories,
+      Categories: this.state.Categories,
 
       addUser: this.addUser,
+      checkUser: this.checkUser,
       //user
       UserBooksTableTitle: this.state.UserBooksTableTitle,
       setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
-      FilteredUserBooks: this.state.FilteredUserBooks
+      FilteredUserBooks: this.state.FilteredUserBooks,
     }
     return (
       <>
         <context.Provider value={contextValue}>
-            <Routing/>
+          <Routing />
         </context.Provider>
       </>
     );
