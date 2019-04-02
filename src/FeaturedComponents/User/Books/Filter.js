@@ -4,69 +4,62 @@ import { context } from '../../../App';
 
 export default class UserBooksFilter extends React.Component {
 	constructor() {
-    super();
-    this.handleclickCurrentlyReading = this.handleclickCurrentlyReading.bind(this);
-    this.handleclickAll = this.handleclickAll.bind(this);
+		super();
+		this.handleclickCurrentlyReading = this.handleclickCurrentlyReading.bind(this);
+		this.handleclickAll = this.handleclickAll.bind(this);
 		this.handleclickRead = this.handleclickRead.bind(this);
-		 	this.handleclickWantedToRead = this.handleclickWantedToRead.bind(this);
-	}
-	
-	handleclickAll=(e)=>(value)=>
-	{
-		console.log(e);
-		console.log(e.UserBooks);
-		const userbooks=e.UserBooks.slice();
-		const newuserbooks=userbooks.filter(a=>a.shelve==="currently reading"||a.shelve==="read"||a.shelve==="wanted to read");
-		e.setFilteredUserBooks(newuserbooks,"All");
-				console.log(newuserbooks);
+		this.handleclickWantedToRead = this.handleclickWantedToRead.bind(this);
 	}
 
-	handleclickRead=(e)=>(value)=>
-	{
+	handleclickAll = (e) => (value) => {
 		console.log(e);
 		console.log(e.UserBooks);
-		const userbooks=e.UserBooks.slice();
-		const newuserbooks=userbooks.filter(a=>a.shelve==="read")
-		e.setFilteredUserBooks(newuserbooks,"Read");
-	
+		const userbooks = e.UserBooks.slice();
+		const newuserbooks = userbooks.filter(a => a.shelve === "currently reading" || a.shelve === "read" || a.shelve === "wanted to read");
+		e.setFilteredUserBooks(newuserbooks, "All");
+		console.log(newuserbooks);
 	}
 
-	handleclickCurrentlyReading=(e)=>(value)=>
-	{
+	handleclickRead = (e) => (value) => {
 		console.log(e);
 		console.log(e.UserBooks);
-		const userbooks=e.UserBooks.slice();
-		const newuserbooks=userbooks.filter(a=>a.shelve==="currently reading")
-		e.setFilteredUserBooks(newuserbooks,"Currently Reading");
-		}
+		const userbooks = e.UserBooks.slice();
+		const newuserbooks = userbooks.filter(a => a.shelve === "read")
+		e.setFilteredUserBooks(newuserbooks, "Read");
 
-	handleclickWantedToRead=(e)=>(value)=>
-	{
+	}
+
+	handleclickCurrentlyReading = (e) => (value) => {
 		console.log(e);
 		console.log(e.UserBooks);
-		const userbooks=e.UserBooks.slice();
-		const newuserbooks=userbooks.filter(a=>a.shelve==="wanted to read")
-		e.setFilteredUserBooks(newuserbooks,"Wanted To Read");
-		}
+		const userbooks = e.UserBooks.slice();
+		const newuserbooks = userbooks.filter(a => a.shelve === "currently reading")
+		e.setFilteredUserBooks(newuserbooks, "Currently Reading");
+	}
 
-  render() {
-    return (
+	handleclickWantedToRead = (e) => (value) => {
+		console.log(e);
+		console.log(e.UserBooks);
+		const userbooks = e.UserBooks.slice();
+		const newuserbooks = userbooks.filter(a => a.shelve === "wanted to read")
+		e.setFilteredUserBooks(newuserbooks, "Wanted To Read");
+	}
 
-      <context.Consumer>
-        {
-          value => (
+	render() {
+		return (
 
-           
+			<context.Consumer>
+				{
+					value => (
 						<div className="userbooksfilter">
-               <h6 onClick={this.handleclickAll(value)}>All</h6><br/>
-							 <h6 onClick={this.handleclickRead(value)}>Read</h6><br/>
-							 <h6 onClick={this.handleclickCurrentlyReading(value)}>Currently Reading</h6><br/>
-							 <h6 onClick={this.handleclickWantedToRead(value)}>Wanted To Read</h6><br/>
-							 </div>
-							
+							<h6 onClick={this.handleclickAll(value)}>All</h6><br />
+							<h6 onClick={this.handleclickRead(value)}>Read</h6><br />
+							<h6 onClick={this.handleclickCurrentlyReading(value)}>Currently Reading</h6><br />
+							<h6 onClick={this.handleclickWantedToRead(value)}>Wanted To Read</h6><br />
+						</div>
 					)
-					}
-					</context.Consumer>
-					)
-					}
-					}
+				}
+			</context.Consumer>
+		)
+	}
+}
