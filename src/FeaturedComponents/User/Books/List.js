@@ -15,8 +15,8 @@ export default class UserBooksList extends React.Component {
           value => (
             <form>
               <fieldset>
-                <legand><h3>{value.UserBooksTableTitle}</h3> </legand>
-                    <Table striped bordered hover responsive  >
+                <legend className="legend"><h3>{value.UserBooksTableTitle}</h3> </legend>
+                    <Table  bordered hover responsive  >
                     <thead>
                       <tr  className="no-gutters text-center" >
                         <th>cover</th>

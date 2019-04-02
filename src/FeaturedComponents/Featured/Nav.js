@@ -22,9 +22,9 @@ return(
 		<FormControl type="text" placeholder="Search" className="mr-sm-2 search" />
 		
 	</Form>
-	<h3><i class="fas fa-user"></i></h3>
+	<h3><i className="fas fa-user"></i></h3>
 	<h3>user 1</h3>
-<h3>	<i class="fas fa-arrow-alt-circle-right"></i></h3>
+	<h3>	<i className="fas fa-arrow-alt-circle-right"></i></h3>
  </Navbar.Collapse>
 </Navbar>
 
