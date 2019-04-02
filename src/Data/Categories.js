@@ -1,40 +1,50 @@
 export default [
     {
         id: "1",
-        name: "Culture"
+        name: "Culture",
+        deleted: false
     }, {
         id: "2",
-        name: "Sport"
+        name: "Sport",
+        deleted: false
     }, {
         id: "3",
-        name: "Economics"
+        name: "Economics",
+        deleted: false
     },
     {
         id: "4",
-        name: "Technology"
+        name: "Technology",
+        deleted: false
     },
     {
         id: "5",
-        name: "Biography"
+        name: "Biography",
+        deleted: false
     },
     {
         id: "6",
-        name: "History"
+        name: "History",
+        deleted: false
     },
     {
         id: "7",
-        name: "Classics"
+        name: "Classics",
+        deleted: false
     },
     {
         id: "8",
-        name: "Romance"
+        name: "Romance",
+        deleted: false
     },
     {
         id: "9",
-        name: "Science"
+        name: "Science",
+        deleted: false
     },
     {
         id: "10",
-        name: "Fiction"
+        name: "Fiction",
+        deleted: false
     }
 ]

@@ -57,18 +57,24 @@ class App extends Component {
 
   addBook(book) {
     const newBooks = this.state.Books.slice();
-    this.setState({ Books: [...newBooks.concat(book)] });
+    this.setState({ Books: [...newBooks.concat(book)] }, () => {
+      // BooksData = [...this.state.Books];
+    });
   }
   editBook(book) {
     const newBooks = this.state.Books.slice();
     let bookEdited = newBooks.findIndex(b => b.id === book.id);
     newBooks[bookEdited] = book;
-    this.setState({ Books: [...newBooks] });
+    this.setState({ Books: [...newBooks] }, () => {
+      // BooksData = [...this.state.Books];
+    });
   }
   deleteBook(bookID) {
     const newbooks = this.state.Books.slice();
     newbooks.find(b => b.id === bookID).deleted = true
-    this.setState({ Books: [...newbooks] });
+    this.setState({ Books: [...newbooks] }, () => {
+      // BooksData = [...this.state.Books];
+    });
   }
 
   setFilteredUserBooks(userbooks, UserBooksTableTitle) {

@@ -9,6 +9,7 @@ import AdminPanel from '../FeaturedComponents/Admin/Panel';
 import { LoginForm } from '../FeaturedComponents/UserForms/login';
 import { SignUpForm } from '../FeaturedComponents/UserForms/signup';
 import CategoriesListing from '../FeaturedComponents/Featured/Categories/Listing';
+import BookDetails from '../FeaturedComponents/Featured/Book/Details';
 
 export default class Routing extends React.Component {
   render() {
@@ -17,6 +18,7 @@ export default class Routing extends React.Component {
         <Switch>
           <Route exact path="/" component={UserHome} />
           <Route exact path="/books" component={BooksDisplayListing} />
+          <Route exact path="/books/:bookId" component={BookDetails} />
           <Route exact path="/admin" component={AdminPanel} />
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/login" component={LoginForm} />
