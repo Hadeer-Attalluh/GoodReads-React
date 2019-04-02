@@ -27,7 +27,6 @@ export default class AddEditBookForm extends React.Component {
             }
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
     }
     handleSubmit = (actionHandler) => (e) => {
         e.preventDefault();
@@ -65,12 +64,6 @@ export default class AddEditBookForm extends React.Component {
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
-    handleSelect(e) {
-        debugger;
-        console.log(e.nativeEvent.target);
-        const index = e.nativeEvent.target.selectedIndex;
-        this.setState({ [e.nativeEvent.target.name]: e.nativeEvent.target.value })
-    }
     render() {
         return (
             <context.Consumer>
@@ -89,9 +82,9 @@ export default class AddEditBookForm extends React.Component {
 
                                     <Form.Group as={Col}>
                                         <Form.Label>Category</Form.Label>
-                                        <Form.Control as="select" name="categoryId" onChange={this.handleSelect} value={this.state.categoryId}>
+                                        <Form.Control as="select" name="categoryId" onChange={this.handleChange} value={this.state.categoryId}>
                                             {
-                                                value.Categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)
+                                                value.Categories.filter(c=>c.deleted === false).map(c => <option key={c.id} value={c.id}>{c.name}</option>)
                                             }
                                         </Form.Control>
                                     </Form.Group>
@@ -100,7 +93,7 @@ export default class AddEditBookForm extends React.Component {
                                         <Form.Label>Author</Form.Label>
                                         <Form.Control as="select" name="authorId" onChange={this.handleSelect} value={this.state.authorId}>
                                             {
-                                                value.authors.map(a => <option key={a.id} value={a.id}>{a['first-name'] + ' ' + a['last-name']}</option>)
+                                                value.authors.filter(a=>a.deleted === false).map(a => <option key={a.id} value={a.id}>{a['first-name'] + ' ' + a['last-name']}</option>)
                                             }
                                         </Form.Control>
                                     </Form.Group>
