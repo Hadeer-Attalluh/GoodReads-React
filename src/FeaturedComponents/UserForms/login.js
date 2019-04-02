@@ -17,20 +17,24 @@ export class LoginForm extends Component {
         this.setState({ [name]: value });
     }
 
-    handleSubmit = (checkUser) => (e) => {
+    handleSubmit = (value) => (e) => {
+        // debugger;
+        console.log(e);
         e.preventDefault();
         if (!(this.state.email && this.state.password)) return;
         const user = {
             email: this.state.email,
             password: this.state.password,
         }
-        checkUser(user);
-        if (user.email === "Sincere@april.biz") {
+        value.checkUser(user);
+        console.log(value.isAdmin)
+        if (value.isAdmin) {
+            debugger;
             this.props.history.push('/admin');
         }
-        // else{
-        //     this.props.history.push('/categories');
-        // }
+        else {
+            this.props.history.push('/categories');
+        }
     }
 
     render() {
@@ -38,7 +42,7 @@ export class LoginForm extends Component {
             <context.Consumer>
                 {
                     value => (
-                        <Form className='login bg-gold form-border' onSubmit={this.handleSubmit(value.checkUser)}>
+                        <Form className='login bg-gold form-border' onSubmit={this.handleSubmit(value)}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label className="text-white">Email address</Form.Label>
                                 <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleChange} />
