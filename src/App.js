@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Col from 'react-bootstrap/Col';
-import Routing from './Router'
+import Routing from '../src/SharedComponents/Router'
 //Data
 import AuthorsData from '../src/Data/Authors';
 import UsersData from './Data/Users.js';

@@ -43,7 +43,7 @@ export default class AuthorAdminCard extends React.Component {
                                     <Col sm={1}><i className="fas fa-trash-alt" onClick={this.handleDelete(value.deleteAuthor)}></i></Col>
                                 </Row>
                             </ListGroup.Item>
-                            <AddEditAuthorForm show={this.state.showEditModal} onHide={this.handleClose} editmode {...this.props} />
+                            {this.state.showEditModal && <AddEditAuthorForm show={this.state.showEditModal} onHide={this.handleClose} editmode {...this.props} />}
                         </React.Fragment>
                     )
                 }

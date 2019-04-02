@@ -52,11 +52,12 @@ export default class UserBooksFilter extends React.Component {
 				{
 					value => (
 						<div className="userbooksfilter">
-							<h6 onClick={this.handleclickAll(value)}>All</h6><br />
-							<h6 onClick={this.handleclickRead(value)}>Read</h6><br />
-							<h6 onClick={this.handleclickCurrentlyReading(value)}>Currently Reading</h6><br />
-							<h6 onClick={this.handleclickWantedToRead(value)}>Wanted To Read</h6><br />
+							<h6 className="filter_link" onClick={this.handleclickAll(value)}>All</h6><br />
+							<h6 className="filter_link" onClick={this.handleclickRead(value)}>Read</h6><br />
+							<h6 className="filter_link" onClick={this.handleclickCurrentlyReading(value)}>Currently Reading</h6><br />
+							<h6 className="filter_link" onClick={this.handleclickWantedToRead(value)}>Wanted To Read</h6><br />
 						</div>
+
 					)
 				}
 			</context.Consumer>

@@ -41,7 +41,7 @@ export default class BookAdminCard extends React.Component {
                                     <Col sm={1}><i className="fas fa-trash-alt" onClick={this.handleDelete(value.deleteBook)} /></Col>
                                 </Row>
                             </ListGroup.Item>
-                            <EditBookForm show={this.state.showEditModal} onHide={this.handleClose} editmode {...this.props} />
+                            {this.state.showEditModal && <EditBookForm show={this.state.showEditModal} onHide={this.handleClose} editmode {...this.props} />}
                         </React.Fragment>
                     )
                 }

@@ -23,12 +23,12 @@ const UserHome = (props) => {
 
 			</Row>
 			<Row>
-				<Col>
+				<Col sm={6}>
 				</Col>
-				<Col>
+				<Col sm={4}>
 					<DisplayPagination />
-				</Col>
-				<Col>
+				</Col >
+				<Col sm={6}>
 				</Col>
 			</Row>
 		</Container>
