@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserNavBar from './Nav';
 //user
 import Home from '../SharedComponents/Home';
@@ -28,7 +28,6 @@ export default class Routing extends React.Component {
           <Route exact path="/categories" component={CategoriesListing} />
         </Switch>
       </Router>
-
     )
   }
 }
