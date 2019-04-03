@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
+import { Container, CardDeck, Col } from 'react-bootstrap';
+import CategoryCard from './Card';
 import { context } from '../../../App';
 
 export default class CategoriesListing extends Component {
@@ -8,7 +11,11 @@ export default class CategoriesListing extends Component {
                 {
                     value => (
                         <>
-                            {value.Categories.map(c => <a href="#" key={c.id}>{c.name}<br></br></a>)}
+                            <Container className="mt-5">
+                                <CardDeck>
+                                    {value.Categories.map(c => <Col sm={4} key={c.id}><CategoryCard {...c} /></Col>)}
+                                </CardDeck>
+                            </Container>
                         </>
                     )
                 }
@@ -16,3 +23,4 @@ export default class CategoriesListing extends Component {
         )
     }
 }
+
