@@ -11,38 +11,41 @@ export default class UserBooksFilter extends React.Component {
 		this.handleclickWantedToRead = this.handleclickWantedToRead.bind(this);
 	}
 
-	handleclickAll = (e) => (value) => {
+	handleclickAll = (value) => (e) => {
 		console.log(e);
-		console.log(e.UserBooks);
-		const userbooks = e.UserBooks.slice();
+		console.log(value.UserBooks);
+		const userbooks = value.UserBooks.slice();
 		const newuserbooks = userbooks.filter(a => a.shelve === "currently reading" || a.shelve === "read" || a.shelve === "wanted to read");
-		e.setFilteredUserBooks(newuserbooks, "All");
+		value.setFilteredUserBooks(newuserbooks, "All");
 		console.log(newuserbooks);
 	}
 
-	handleclickRead = (e) => (value) => {
+	handleclickRead = (value) => (e) => {
 		console.log(e);
-		console.log(e.UserBooks);
-		const userbooks = e.UserBooks.slice();
+		console.log(value.UserBooks);
+		const userbooks = value.UserBooks.slice();
 		const newuserbooks = userbooks.filter(a => a.shelve === "read")
-		e.setFilteredUserBooks(newuserbooks, "Read");
+		value.setFilteredUserBooks(newuserbooks, "Read");
 
 	}
 
-	handleclickCurrentlyReading = (e) => (value) => {
+	handleclickCurrentlyReading = (value) => (e) => {
 		console.log(e);
-		console.log(e.UserBooks);
-		const userbooks = e.UserBooks.slice();
+		console.log(value.UserBooks);
+		const userbooks = value.UserBooks.slice();
 		const newuserbooks = userbooks.filter(a => a.shelve === "currently reading")
-		e.setFilteredUserBooks(newuserbooks, "Currently Reading");
+		value.setFilteredUserBooks(newuserbooks, "Currently Reading");
 	}
 
-	handleclickWantedToRead = (e) => (value) => {
+	handleclickWantedToRead = (value) => (e) => {
 		console.log(e);
-		console.log(e.UserBooks);
-		const userbooks = e.UserBooks.slice();
+		console.log(value.UserBooks);
+		const userbooks = value.UserBooks.slice();
 		const newuserbooks = userbooks.filter(a => a.shelve === "wanted to read")
-		e.setFilteredUserBooks(newuserbooks, "Wanted To Read");
+		value.setFilteredUserBooks(newuserbooks, "Wanted To Read");
+	}
+	handleClick = (value) => (e) => {
+		value.setFilterKey(e.target.id);
 	}
 
 	render() {
@@ -52,10 +55,14 @@ export default class UserBooksFilter extends React.Component {
 				{
 					value => (
 						<div className="userbooksfilter">
-							<h6 className="filter_link" onClick={this.handleclickAll(value)}>All</h6><br />
+							{/* <h6 className="filter_link" onClick={this.handleclickAll(value)}>All</h6><br />
 							<h6 className="filter_link" onClick={this.handleclickRead(value)}>Read</h6><br />
 							<h6 className="filter_link" onClick={this.handleclickCurrentlyReading(value)}>Currently Reading</h6><br />
-							<h6 className="filter_link" onClick={this.handleclickWantedToRead(value)}>Wanted To Read</h6><br />
+							<h6 className="filter_link" onClick={this.handleclickWantedToRead(value)}>Wanted To Read</h6><br /> */}
+							<h6 className="filter_link" id="all" onClick={this.handleClick(value)}>All</h6><br />
+							<h6 className="filter_link" id="read" onClick={this.handleClick(value)}>Read</h6><br />
+							<h6 className="filter_link" id="currently reading" onClick={this.handleClick(value)}>Currently Reading</h6><br />
+							<h6 className="filter_link" id="wanted to read" onClick={this.handleClick(value)}>Wanted To Read</h6><br />
 						</div>
 
 					)
