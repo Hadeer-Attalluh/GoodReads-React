@@ -19,7 +19,7 @@ class App extends Component {
       Authors: AuthorsData.slice(),
       Users: UsersData.slice(),
       Books: BooksData.slice(),
-      Categories: CategoriesData.filter(a => !a.deleted),
+      Categories: CategoriesData.filter(a => a.deleted === false),
       //user
       UserBooks: UserBooksData,
       FilteredUserBooks: UserBooksData,
@@ -82,7 +82,7 @@ class App extends Component {
     });
   }
   setCategories(categories) {
-    const newcategories = categories.filter(c => c.deleted === 'false')
+    const newcategories = categories.filter(c => c.deleted === false)
     this.setState({ Categories: newcategories })
   }
 

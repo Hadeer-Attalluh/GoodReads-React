@@ -41,7 +41,7 @@ export default class AdminCategoriesAddEditForm extends React.Component {
       const newBook = {
         id: uuidv1(),
         name: this.state.name,
-        deleted: 'false',
+        deleted: false,
       };
       const categories = value.Categories.slice();
       if (this.props.editmode) {
@@ -59,9 +59,9 @@ export default class AdminCategoriesAddEditForm extends React.Component {
         console.log(newCategories);
       }
     }
-    else {
-      this.setState({ errors: formValidatorCtx.validationErrors() })
-    }
+    // else {
+    //   this.setState({ errors: formValidatorCtx.validationErrors() })
+    // }
 
     this.setState({
       name: "",

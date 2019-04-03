@@ -24,7 +24,7 @@ export default class AdminCategoryCard extends React.Component {
 			const Categories = value.Categories.slice();
 			const id = this.props.id;
 			const categoryIndex = Categories.findIndex(c => c.id === id);
-			Categories[categoryIndex].deleted = 'true';
+			Categories[categoryIndex].deleted = true;
 			value.setCategories(Categories);
 		}
 		else {
