@@ -70,7 +70,6 @@ export class SignUpForm extends Component {
                 {
                     value => (
                         <>
-                            <UserNavBar />
                             <Form className="signup bg-grey form-border" onSubmit={this.handleSubmit(value.addUser)} key={this.state.id}>
                                 <h3 className='text-center text-white'>New Here? Create A free account!</h3>
                                 <Form.Row>
