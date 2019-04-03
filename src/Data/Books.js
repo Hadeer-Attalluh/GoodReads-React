@@ -12,7 +12,7 @@ export default [
         title: "ارض زيكولا",
         cover: 'zaykola.jpg',
         authorId: "1",
-        categoryId: "1",
+        categoryId: "6",
         deleted: false,
     },
     {
@@ -20,7 +20,7 @@ export default [
         title: "Oliver Twist",
         cover: 'oliver.jpg',
         authorId: "1",
-        categoryId: "1",
+        categoryId: "9",
         deleted: false,
     },
     {
@@ -28,7 +28,7 @@ export default [
         title: "No Title",
         cover: 'default.jpg',
         authorId: "1",
-        categoryId: "1"
+        categoryId: "7"
     },
     {
         id: "5",
@@ -43,15 +43,15 @@ export default [
         title: "Being Mortal",
         cover: '1.jpg',
         authorId: "1",
-        categoryId: "1",
+        categoryId: "10",
         deleted: false,
 
     }, {
         id: "7",
         title: "No Title",
         cover: 'default.jpg',
-        authorId: "1",
-        categoryId: "1",
+        authorId: "3",
+        categoryId: "2",
         deleted: false,
     },
     {
@@ -66,8 +66,8 @@ export default [
         id: "30",
         title: "the Tales of Beedle the Bard",
         cover: '7.jpg',
-        authorId: "1",
-        categoryId: "1",
+        authorId: "2",
+        categoryId: "5",
         deleted: true,
 
     },
