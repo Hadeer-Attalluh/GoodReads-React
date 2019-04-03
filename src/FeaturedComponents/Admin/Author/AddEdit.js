@@ -99,7 +99,7 @@ export default class AddEditAuthorForm extends React.Component {
                   </Form.Group>
                   <Form.Group controlId="birthdate">
                     <Form.Label>Birthdate</Form.Label>
-                    <Form.Control placeholder="Enter Birthdate" name="birthdate" value={this.state.birthdate} onChange={this.handleChange} />
+                    <Form.Control type="date" placeholder="Enter Birthdate" name="birthdate" value={this.state.birthdate} onChange={this.handleChange} />
                   </Form.Group>
                 </Form>
               </Modal.Body>
