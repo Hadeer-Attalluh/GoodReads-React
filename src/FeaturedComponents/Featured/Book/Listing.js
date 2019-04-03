@@ -24,7 +24,7 @@ export default class BookDisplayListing extends React.Component {
                                 </CardDeck>
                             </Row>
                             <Row className="text-center">
-                                <Paging />
+                                <Paging xs="auto" />
                             </Row>
                         </Container>
                     )

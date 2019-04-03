@@ -10,5 +10,5 @@ export function getBookById(id) {
 // }
 
 export function getBooksByCategoryId(id) {
-    return BooksData.filter(b => b.categoryId === id);
+    return BooksData.filter(b => !b.deleted && b.categoryId === id);
 }
