@@ -52,21 +52,24 @@ export default class AdminCategoriesAddEditForm extends React.Component {
         categories[newBook.index] = editedbook;
         value.setCategories(categories);
         console.log(categories);
+        this.setState({
+          name: editedbook.name,
+        });
       }
       else {
         const newCategories = [...categories].concat(newBook)
         value.setCategories(newCategories);
         console.log(newCategories);
+        this.setState({
+          name: newBook.name,
+        });
       }
-    }
-    // else {
-    //   this.setState({ errors: formValidatorCtx.validationErrors() })
-    // }
+      this.props.onHide();
 
-    this.setState({
-      name: "",
-    });
-    this.props.onHide();
+    }
+    else {
+      this.setState({ errors: formValidatorCtx.validationErrors() })
+    }
   }
   render() {
     return (
@@ -88,24 +91,22 @@ export default class AdminCategoriesAddEditForm extends React.Component {
                     </Col>
                   </Form.Group>
                 </Form>
+                {
+                  this.state.errors.length
+                    ? this.state.errors.map(e => <h1 key={e.name}>{e.name}{''}is not valid</h1>)
+                    : <h1></h1>
+                }
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="dark" type="submit" onClick={this.handleAdd(value)}>
                   {this.props.editmode ? 'Save Changes' : 'Add '}
                 </Button>
                 <Button variant="dark" onClick={this.props.onHide}>Close</Button>
-
               </Modal.Footer>
             </Modal>)
 
         }
-        {
-          // this.state.errors.length
-          //   ? this.state.errors.map(e => <h1 key={e.name}>{e.name}{''}is not valid</h1>)
-          //   : <h1>No errors</h1>
 
-
-        }
       </context.Consumer>
     )
   }
