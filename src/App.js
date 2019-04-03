@@ -12,8 +12,8 @@ import CategoriesData from '../src/Data/Categories';
 export const context = React.createContext();
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       //Admin
       Authors: AuthorsData.slice(),
@@ -24,7 +24,7 @@ class App extends Component {
       UserBooks: UserBooksData,
       FilteredUserBooks: UserBooksData,
       UserBooksTableTitle: "All",
-
+      isAdmin: false,
     }
     this.addAuthor = this.addAuthor.bind(this);
     this.editAuthor = this.editAuthor.bind(this);
@@ -94,7 +94,9 @@ class App extends Component {
     });
     if (filteredUsers !== undefined) {
       let user = filteredUsers;
-      console.log(user);
+      console.log(user.admin);
+      this.setState({ isAdmin: user.admin });
+
     } else {
       console.log('user does not exist');
     }
@@ -122,6 +124,7 @@ class App extends Component {
       setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
       FilteredUserBooks: this.state.FilteredUserBooks,
+      isAdmin: this.state.isAdmin,
     }
     return (
       <>
