@@ -71,7 +71,7 @@ export class SignUpForm extends Component {
                     value => (
                         <>
                             <UserNavBar />
-                            <Form className="signup bg-gold form-border" onSubmit={this.handleSubmit(value.addUser)} key={this.state.id}>
+                            <Form className="signup bg-grey form-border" onSubmit={this.handleSubmit(value.addUser)} key={this.state.id}>
                                 <h3 className='text-center text-white'>New Here? Create A free account!</h3>
                                 <Form.Row>
                                     <Form.Group as={Col} md="6">
@@ -100,12 +100,12 @@ export class SignUpForm extends Component {
                                 <Form.Row>
                                     <Form.Group as={Col} md="6" >
                                         <Form.Label className="text-white">Browse Your Image</Form.Label>
-                                        <Form.Control type="file" name='image' className='custom-file-input' id="customFile" onChange={this.handleChange} value={this.state.image} />
+                                        <Form.Control type="file" name='image' className='custom-file' id="customFile" onChange={this.handleChange} value={this.state.image} />
                                     </Form.Group>
                                 </Form.Row>
-                                <Button className="submit-btn" type="submit">
+                                <Button className="button-submit" type="submit">
                                     Submit
-                            </Button>
+                                </Button>
                             </Form>
                         </>
                     )}
