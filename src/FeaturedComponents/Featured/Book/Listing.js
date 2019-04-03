@@ -11,7 +11,7 @@ export default class BookDisplayListing extends React.Component {
                     value => (
                         <Container fluid={true}>
                             <CardDeck>
-                                {value.books.filter(b => !b.deleted).map(b => <Col sm={3} key={b.id}><BookDisplayCard {...b} /></Col>)}
+                                {value.books.filter(b => !b.deleted).map(b => <Col sm={4} md={3} className="my-3" key={b.id}><BookDisplayCard {...b} /></Col>)}
                             </CardDeck>
                         </Container>
                     )

@@ -22,7 +22,7 @@ export default class BookDetails extends React.Component {
         const id = this.props.match.params.bookId;
         this.setState({
             ...getBookById(id)
-        }, () => { console.log(this.state) });
+        });
     }
     getAuthorFullName(AuthorsData, id) {
         let index = AuthorsData.findIndex(a => a.id === id);
@@ -37,7 +37,7 @@ export default class BookDetails extends React.Component {
                             <div className="d-flex">
                                 <div className="d-flex flex-column">
                                     <Card>
-                                        <Card.Img variant="top" src={this.state.cover === "" ? "http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png" : this.state.cover} alt="Book Cover" />
+                                        <Card.Img variant="top" src={this.state.cover === "" ? "http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png" : require('../../../Assets/Books/' + this.state.cover)} alt="Book Cover" />
                                     </Card>
                                     <Form.Group as={Col} className="d-block">
                                         <Form.Control as="select">
