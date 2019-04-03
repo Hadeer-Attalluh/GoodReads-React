@@ -38,7 +38,7 @@ export default class AdminCategoriesList extends React.Component {
 									<h3><i className="fas fa-plus-circle" onClick={this.handleShow}></i></h3>
 								</Col>
 							</Row>
-							<AdminCategoriesAddEditForm show={this.state.showAddModal} onHide={this.handleClose} editMode={false} />
+							<AdminCategoriesAddEditForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false} />
 							<Table bordered hover responsive  >
 								<thead>
 									<tr className=" text-center" >
@@ -49,8 +49,7 @@ export default class AdminCategoriesList extends React.Component {
 
 								</thead>
 								<tbody>
-									{console.log(value.categories)}
-
+									{console.log(value.Categories)}
 									{value.Categories.map(c => <AdminCategoryCard key={c.id}  {...c} />)}
 
 								</tbody>

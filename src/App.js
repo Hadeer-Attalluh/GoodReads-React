@@ -19,11 +19,12 @@ class App extends Component {
       Authors: AuthorsData.slice(),
       Users: UsersData.slice(),
       Books: BooksData.slice(),
-      Categories: CategoriesData,
+      Categories: CategoriesData.filter(a => !a.deleted),
       //user
       UserBooks: UserBooksData,
       FilteredUserBooks: UserBooksData,
       UserBooksTableTitle: "All",
+      filterKey: "all",
       isAdmin: false,
     }
     this.addAuthor = this.addAuthor.bind(this);
@@ -34,9 +35,13 @@ class App extends Component {
     this.editBook = this.editBook.bind(this);
     this.deleteBook = this.deleteBook.bind(this);
 
+    this.setCategories = this.setCategories.bind(this);
+
     this.setFilteredUserBooks = this.setFilteredUserBooks.bind(this);
     this.addUser = this.addUser.bind(this);
     this.checkUser = this.checkUser.bind(this);
+
+    this.setFilerKey = this.setFilerKey.bind(this);
   }
 
   addAuthor(author) {
@@ -76,10 +81,17 @@ class App extends Component {
       // BooksData = [...this.state.Books];
     });
   }
+  setCategories(categories) {
+    const newcategories = categories.filter(c => c.deleted === 'false')
+    this.setState({ Categories: newcategories })
+  }
 
   setFilteredUserBooks(userbooks, UserBooksTableTitle) {
     const FilteredUserBooks = this.state.FilteredUserBooks.slice();
     this.setState({ FilteredUserBooks: [...userbooks], UserBooksTableTitle: UserBooksTableTitle })
+  }
+  setFilerKey(key) {
+    this.setState({ filterKey: key });
   }
 
   addUser(user) {
@@ -116,6 +128,7 @@ class App extends Component {
       deleteBook: this.deleteBook,
       //admin categories
       Categories: this.state.Categories,
+      setCategories: this.setCategories,
 
       addUser: this.addUser,
       checkUser: this.checkUser,
@@ -124,6 +137,8 @@ class App extends Component {
       setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
       FilteredUserBooks: this.state.FilteredUserBooks,
+      setFilterKey: this.setFilerKey,
+      filterKey: this.state.filterKey,
       isAdmin: this.state.isAdmin,
     }
     return (

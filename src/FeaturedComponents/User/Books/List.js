@@ -28,7 +28,7 @@ export default class UserBooksList extends React.Component {
                   </thead>
                   <tbody>
                     {console.log(value.FilteredUserBooks)}
-                    {value.FilteredUserBooks.map(b => <UserBookCard key={b.id}  {...b} />)}
+                    {value.UserBooks.filter(a => value.filterKey === 'all' ? (a.shelve === "currently reading" || a.shelve === "read" || a.shelve === "wanted to read") : a.shelve === value.filterKey).map(b => <UserBookCard key={b.id}  {...b} />)}
                   </tbody>
                 </Table>
               </fieldset>

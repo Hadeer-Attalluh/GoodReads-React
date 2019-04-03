@@ -18,7 +18,7 @@ export default class Routing extends React.Component {
       <Router>
         <UserNavBar />
         <Switch>
-          <Route exact path="/" component={UserHome} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/userProfile" component={UserHome} />
           <Route exact path="/books" component={BooksDisplayListing} />
           <Route exact path="/books/:bookId" component={BookDetails} />
