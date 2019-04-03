@@ -83,7 +83,7 @@ export default class AddEditAuthorForm extends React.Component {
                 <Modal.Title>{this.props.editmode ? 'Edit Author' : 'Add New Author'}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form onSubmit={this.props.editmode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)}>
+                <Form onSubmit={this.props.editmode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)} >
                   <Form.Group controlId="fName">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control placeholder="Enter First Name" name="first-name" value={this.state['first-name']} onChange={this.handleChange} />
@@ -99,7 +99,7 @@ export default class AddEditAuthorForm extends React.Component {
                   </Form.Group>
                   <Form.Group controlId="birthdate">
                     <Form.Label>Birthdate</Form.Label>
-                    <Form.Control placeholder="Enter Birthdate" name="birthdate" value={this.state.birthdate} onChange={this.handleChange} />
+                    <Form.Control type="date" placeholder="Enter Birthdate" name="birthdate" value={this.state.birthdate} onChange={this.handleChange} />
                   </Form.Group>
                 </Form>
               </Modal.Body>

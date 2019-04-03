@@ -2,7 +2,7 @@ export default [
     {
         id: "1",
         title: "Hebta",
-        cover: "https://images-na.ssl-images-amazon.com/images/I/510oZaaiGbL.jpg",
+        cover: 'hebta.jpg',
         authorId: "1",
         categoryId: "1",
         deleted: false
@@ -10,59 +10,66 @@ export default [
     {
         id: "2",
         title: "ارض زيكولا",
-        cover: "https://images.gr-assets.com/books/1441287700l/9753375.jpg",
+        cover: 'zaykola.jpg',
         authorId: "1",
-        categoryId: "1",
+        categoryId: "6",
         deleted: false,
-    }, {
+    },
+    {
         id: "3",
         title: "Oliver Twist",
-        cover: "https://images-na.ssl-images-amazon.com/images/I/91ZLjkG%2BYNL.jpg",
+        cover: 'oliver.jpg',
         authorId: "1",
-        categoryId: "1",
+        categoryId: "9",
         deleted: false,
-
-    }, {
+    },
+    {
         id: "4",
         title: "No Title",
-        cover: "http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png",
+        cover: 'default.jpg',
         authorId: "1",
-        categoryId: "1"
+        categoryId: "7"
     },
     {
         id: "5",
-        title: "Hebta",
-        cover: "https://images-na.ssl-images-amazon.com/images/I/510oZaaiGbL.jpg",
-        authorId: "1",
-        categoryId: "1",
+        title: "Lost World",
+        cover: '2.jpg',
+        authorId: "4",
+        categoryId: "5",
         deleted: false,
     },
     {
         id: "20",
-        title: "Oliver Twist",
-        cover: "https://images-na.ssl-images-amazon.com/images/I/91ZLjkG%2BYNL.jpg",
+        title: "Being Mortal",
+        cover: '1.jpg',
         authorId: "1",
-        categoryId: "1"
+        categoryId: "10",
+        deleted: false,
+
     }, {
         id: "7",
         title: "No Title",
-        cover: "http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png",
-        authorId: "1",
-        categoryId: "1",
+        cover: 'default.jpg',
+        authorId: "3",
+        categoryId: "2",
         deleted: false,
     },
     {
         id: "25",
-        title: "ارض زيكولا",
-        cover: "https://images.gr-assets.com/books/1441287700l/9753375.jpg",
+        title: "sun of a witch",
+        cover: '5.jpg',
         authorId: "2",
-        categoryId: "1"
+        categoryId: "1",
+        deleted: false,
+
     }, {
         id: "30",
-        title: "Oliver Twist",
-        cover: "https://images-na.ssl-images-amazon.com/images/I/91ZLjkG%2BYNL.jpg",
-        authorId: "1",
-        categoryId: "1"
+        title: "the Tales of Beedle the Bard",
+        cover: '7.jpg',
+        authorId: "2",
+        categoryId: "5",
+        deleted: true,
+
     },
 
 ]

@@ -11,6 +11,7 @@ import { LoginForm } from '../FeaturedComponents/UserForms/login';
 import { SignUpForm } from '../FeaturedComponents/UserForms/signup';
 import CategoriesListing from '../FeaturedComponents/Featured/Categories/Listing';
 import BookDetails from '../FeaturedComponents/Featured/Book/Details';
+import CategoryDetails from '../FeaturedComponents/Featured/Categories/Details';
 
 export default class Routing extends React.Component {
   render() {
@@ -26,6 +27,7 @@ export default class Routing extends React.Component {
           <Route exact path="/signup" component={SignUpForm} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/categories" component={CategoriesListing} />
+          <Route exact path="/categories/:categoryId" component={CategoryDetails} />
         </Switch>
       </Router>
     )

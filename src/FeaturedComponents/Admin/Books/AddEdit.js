@@ -21,8 +21,8 @@ export default class AddEditBookForm extends React.Component {
         else {
             this.state = {
                 title: "",
-                authorId: "0",
-                categoryId: "0",
+                authorId: "1",
+                categoryId: "1",
                 cover: "",
             }
         }
@@ -73,7 +73,7 @@ export default class AddEditBookForm extends React.Component {
                             <Modal.Header closeButton>
                                 <Modal.Title>{this.props.editmode ? "Edit Book" : "Add New Book"}</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body style={{ backgroundImage: "url('" + require('../../../Assets/bookform.jpg') + "')" }}>
                                 <Form onSubmit={this.props.editmode ? this.handleSubmit(value.editBook) : this.handleSubmit(value.addBook)}>
                                     <Form.Group controlId="title">
                                         <Form.Label>Book Name</Form.Label>

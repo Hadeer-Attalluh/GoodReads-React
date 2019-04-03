@@ -8,3 +8,7 @@ export function getBookById(id) {
 //     let index = AuthorsData.findIndex(a => a.id === id);
 //     return AuthorsData[index]['first-name'] + ' ' + AuthorsData[index]['last-name'];
 // }
+
+export function getBooksByCategoryId(id) {
+    return BooksData.filter(b => !b.deleted && b.categoryId === id);
+}

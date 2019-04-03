@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Col } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { context } from '../../App';
 
 export class LoginForm extends Component {
@@ -42,7 +42,7 @@ export class LoginForm extends Component {
             <context.Consumer>
                 {
                     value => (
-                        <Form className='login bg-gold form-border' onSubmit={this.handleSubmit(value)}>
+                        <Form className='login bg-grey form-border' onSubmit={this.handleSubmit(value)}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label className="text-white">Email address</Form.Label>
                                 <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleChange} />
@@ -51,7 +51,7 @@ export class LoginForm extends Component {
                                 <Form.Label className="text-white">Password</Form.Label>
                                 <Form.Control type="password" name="password" placeholder="Password" onChange={this.handleChange} />
                             </Form.Group>
-                            <Button className="submit-btn" type="submit">
+                            <Button className="login-btn" type="submit">
                                 Login
                             </Button>
                         </Form>

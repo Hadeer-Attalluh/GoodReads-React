@@ -1,12 +1,12 @@
 import React from 'react';
-import UserNavBar from './Nav';
 import { SignUpForm } from '../FeaturedComponents/UserForms/signup';
+import { Container } from 'react-bootstrap';
 
 const Home = () => {
     return (
-        <>
-            <SignUpForm />
-        </>
+
+        <SignUpForm />
+
     )
 }
 
