@@ -1,6 +1,7 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 
+
 import { context } from '../../../App';
 import UserBookCard from './Card'
 
@@ -13,9 +14,9 @@ export default class UserBooksList extends React.Component {
         {
           value => (
             <form>
-              <fieldset>
-                <legend className="legend"><h3>{value.UserBooksTableTitle}</h3> </legend>
-                <Table bordered hover responsive  >
+              <fieldset className="userbooks bg-grey">
+                <legend className="legend text-white bg-grey"><h3>{value.UserBooksTableTitle}</h3> </legend>
+                <Table bordered hover responsive className="bg-grey text-white" >
                   <thead>
                     <tr className="no-gutters text-center" >
                       <th>cover</th>
@@ -27,8 +28,10 @@ export default class UserBooksList extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
+                    {value.UserBooks.length
+                      ? value.UserBooks.filter(a => value.filterKey === 'all' ? (a.shelve === "currently reading" || a.shelve === "read" || a.shelve === "wanted to read") : a.shelve === value.filterKey).map(b => <UserBookCard key={b.id}  {...b} />)
+                      : <tr text-center>welcome to Our Website......... you will enjoy....select books to be easy to find....</tr>}
                     {console.log(value.FilteredUserBooks)}
-                    {value.UserBooks.filter(a => value.filterKey === 'all' ? (a.shelve === "currently reading" || a.shelve === "read" || a.shelve === "wanted to read") : a.shelve === value.filterKey).map(b => <UserBookCard key={b.id}  {...b} />)}
                   </tbody>
                 </Table>
               </fieldset>

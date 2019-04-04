@@ -30,16 +30,16 @@ export default class AdminCategoriesList extends React.Component {
 			<context.Consumer>
 				{
 					value => (
-						<Container>
+						<Container >
 							<Row >
 								<Col sm={11}>
 								</Col>
 								<Col sm={1}>
-									<h3><i className="fas fa-plus-circle" onClick={this.handleShow}></i></h3>
+									<h3><i className="fas fa-plus-circle text-white bg-grey" onClick={this.handleShow}></i></h3>
 								</Col>
 							</Row>
 							<AdminCategoriesAddEditForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false} />
-							<Table bordered hover responsive  >
+							<Table bordered hover responsive className="text-white bg-grey" >
 								<thead>
 									<tr className=" text-center" >
 										<th>ID</th>

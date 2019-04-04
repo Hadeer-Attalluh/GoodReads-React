@@ -76,11 +76,11 @@ export default class AdminCategoriesAddEditForm extends React.Component {
       <context.Consumer>
         {
           value => (
-            <Modal {...this.props}>
-              <Modal.Header>
+            <Modal {...this.props} >
+              <Modal.Header className="text-white bg-grey">
                 <h3  >{this.props.editmode ? ' Edit Category' : 'Add Category'}</h3>
               </Modal.Header>
-              <Modal.Body>
+              <Modal.Body className="text-white bg-grey">
                 <Form className="AddCategory">
                   <Form.Group as={Row} >
                     <Form.Label sm={2} >
@@ -97,11 +97,11 @@ export default class AdminCategoriesAddEditForm extends React.Component {
                     : <h1></h1>
                 }
               </Modal.Body>
-              <Modal.Footer>
-                <Button variant="dark" type="submit" onClick={this.handleAdd(value)}>
+              <Modal.Footer className="text-white bg-grey">
+                <Button className="bg-mint category-btn" type="submit" onClick={this.handleAdd(value)}>
                   {this.props.editmode ? 'Save Changes' : 'Add '}
                 </Button>
-                <Button variant="dark" onClick={this.props.onHide}>Close</Button>
+                <Button className="bg-mint category-btn" onClick={this.props.onHide}>Close</Button>
               </Modal.Footer>
             </Modal>)
 

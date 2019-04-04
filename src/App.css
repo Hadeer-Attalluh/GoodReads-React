@@ -67,14 +67,14 @@ fieldset, .userbooksfilter {
   margin: 6% auto;
 }
 
-.login-btn:hover, .button-submit:hover {
+.login-btn:hover, .button-submit:hover,.category-btn:hover {
   background-color: #5BC0BE;
   border-color: white;
   color: #1C2541;
   text-decoration: none;
 }
 
-.login-btn, .button-submit {
+.login-btn, .button-submit ,.category-btn {
   background-color: #5BC0BE;
   border: 1px solid white;
   color: white;
@@ -92,3 +92,4 @@ fieldset, .userbooksfilter {
   height: calc(1.5em + .75rem + 2px);
   margin: 0;
 }
+

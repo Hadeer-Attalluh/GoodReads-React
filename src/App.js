@@ -22,7 +22,6 @@ class App extends Component {
       Categories: CategoriesData.filter(a => a.deleted === false),
       //user
       UserBooks: UserBooksData,
-      FilteredUserBooks: UserBooksData,
       UserBooksTableTitle: "All",
       filterKey: "all",
       isAdmin: false,
@@ -37,7 +36,6 @@ class App extends Component {
 
     this.setCategories = this.setCategories.bind(this);
 
-    this.setFilteredUserBooks = this.setFilteredUserBooks.bind(this);
     this.addUser = this.addUser.bind(this);
     this.checkUser = this.checkUser.bind(this);
 
@@ -86,10 +84,6 @@ class App extends Component {
     this.setState({ Categories: newcategories })
   }
 
-  setFilteredUserBooks(userbooks, UserBooksTableTitle) {
-    const FilteredUserBooks = this.state.FilteredUserBooks.slice();
-    this.setState({ FilteredUserBooks: [...userbooks], UserBooksTableTitle: UserBooksTableTitle })
-  }
   setFilerKey(key) {
     this.setState({ filterKey: key });
   }
@@ -134,9 +128,7 @@ class App extends Component {
       checkUser: this.checkUser,
       //user
       UserBooksTableTitle: this.state.UserBooksTableTitle,
-      setFilteredUserBooks: this.setFilteredUserBooks,
       UserBooks: this.state.UserBooks,
-      FilteredUserBooks: this.state.FilteredUserBooks,
       setFilterKey: this.setFilerKey,
       filterKey: this.state.filterKey,
       isAdmin: this.state.isAdmin,
