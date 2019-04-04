@@ -24,7 +24,11 @@ class App extends Component {
       UserBooks: UserBooksData,
       UserBooksTableTitle: "All",
       filterKey: "all",
-      isAdmin: false,
+      loggedUser: {
+        email:'',
+        password:'',
+        admin: '',
+      },
     }
     this.addAuthor = this.addAuthor.bind(this);
     this.editAuthor = this.editAuthor.bind(this);
@@ -96,13 +100,16 @@ class App extends Component {
   checkUser(loginuser) {
     const allUsers = this.state.Users.slice();
     let filteredUsers = allUsers.find(user => {
-      return user.email === loginuser.email && user.password === Number(loginuser.password);
+      return user.email === loginuser.email && user.password === loginuser.password;
     });
     if (filteredUsers !== undefined) {
       let user = filteredUsers;
-      console.log(user.admin);
-      this.setState({ isAdmin: user.admin });
-
+      let loggedUser = {...this.state.loggedUser};
+      loggedUser.email = user.email;  
+      loggedUser.password = user.password;    
+      loggedUser.admin = user.admin;
+      console.log(loggedUser);
+      this.setState({ loggedUser });
     } else {
       console.log('user does not exist');
     }
@@ -131,7 +138,7 @@ class App extends Component {
       UserBooks: this.state.UserBooks,
       setFilterKey: this.setFilerKey,
       filterKey: this.state.filterKey,
-      isAdmin: this.state.isAdmin,
+      loggedUser: this.state.loggedUser,
     }
     return (
       <>

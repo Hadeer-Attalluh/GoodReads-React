@@ -55,7 +55,6 @@ export class SignUpForm extends Component {
                 image: this.state.image,
             }
             addUser(user);
-            console.log(user);
         }
         else {
             console.log(validationContext.validationErrors());
