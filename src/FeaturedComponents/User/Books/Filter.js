@@ -3,9 +3,6 @@ import { context } from '../../../App';
 
 
 export default class UserBooksFilter extends React.Component {
-	constructor() {
-		super();
-	}
 
 	handleClick = (value) => (e) => {
 		value.setFilterKey(e.target.id);
@@ -13,7 +10,6 @@ export default class UserBooksFilter extends React.Component {
 
 	render() {
 		return (
-
 			<context.Consumer>
 				{
 					value => (

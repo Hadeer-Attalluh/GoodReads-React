@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import uuidv1 from 'uuid/v1';
-import UserNavBar from '../../SharedComponents/Nav';
 import { context } from '../../App';
 
 export class SignUpForm extends Component {
