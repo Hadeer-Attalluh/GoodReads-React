@@ -9,15 +9,15 @@ export default [
     },
     {
         id: "4",
-        photo: "1.jpg",
-        "first-name": "john",
+        photo: "1F.jpg",
+        "first-name": "jane",
         "last-name": "due",
         birthdate: "",
         deleted: false
     },
     {
         id: "3",
-        photo: "2.jpg",
+        photo: "1M.jpg",
         "first-name": "david",
         "last-name": "kebler",
         birthdate: "",
@@ -25,7 +25,7 @@ export default [
     },
     {
         id: "2",
-        photo: "",
+        photo: "2F.jpg",
         "first-name": "martha",
         "last-name": "stewart",
         birthdate: "",
