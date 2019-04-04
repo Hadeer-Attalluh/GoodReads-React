@@ -25,7 +25,7 @@ export default class CategoryDetails extends Component {
                 {
                     value => (
                         <Container fluid={true}>
-                            <Row className="no-gutters p-3">
+                            <Row className="no-gutters p-3 mt-7">
                                 <Col xs={12}>
                                     <CardDeck>
                                         {

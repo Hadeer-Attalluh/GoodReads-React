@@ -11,9 +11,9 @@ export default class CategoriesListing extends Component {
                 {
                     value => (
                         <>
-                            <Container className="mt-5">
-                                <CardDeck>
-                                    {value.Categories.map(c => <Col sm={4} key={c.id}><CategoryCard {...c} /></Col>)}
+                            <Container >
+                                <CardDeck className="mt-7">
+                                    {value.Categories.map(c => <Col sm={6} key={c.id}><CategoryCard {...c} /></Col>)}
                                 </CardDeck>
                             </Container>
                         </>

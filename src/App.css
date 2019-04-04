@@ -1,3 +1,5 @@
+/*---------------------General--------------------------*/
+
 fieldset, .userbooksfilter {
   padding: 20px;
   height: fit-content;
@@ -12,26 +14,8 @@ fieldset, .userbooksfilter {
   margin-top: 113px;
 }
 
-.nav-tabs {
-  margin-top: 5%;
-}
-
 .filter_link:hover {
   cursor: pointer;
-}
-
-.Navbar {
-  margin-bottom: 500px;
-  background-color: rgb(28, 37, 65, 0.8);
-}
-
-.link-white {
-  color: white;
-}
-
-.link-white:hover {
-  color: #5BC0BE;
-  text-decoration: none;
 }
 
 .legend {
@@ -47,9 +31,64 @@ fieldset, .userbooksfilter {
   height: 5%;
 }
 
-.bg-grey {
+.bg-darkgrey {
   background-color: rgb(58, 80, 107, 0.9);
 }
+
+.bg-mint {
+  background-color: #5BC0BE;
+}
+
+.l-white {
+  color: white;
+}
+
+.l-white:hover {
+  color: #1C2541;
+  text-decoration: none;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(28, 37, 65);
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.mt-7 {
+  margin-top: 7%;
+}
+
+/*---------------------Navbar--------------------------*/
+
+.Navbar {
+  margin-bottom: 500px;
+  background-color: rgb(28, 37, 65, 0.8);
+}
+
+.link-white {
+  color: white;
+}
+
+.link-white:hover {
+  color: #5BC0BE;
+  text-decoration: none;
+}
+
+.link-mint {
+  color: #5BC0BE;
+}
+
+.link-mint:hover {
+  color: rgb(28, 37, 65);
+  text-decoration: none;
+}
+
+/*---------------------forms--------------------------*/
 
 .form-border {
   border: 2px solid #3A506B;
@@ -59,30 +98,26 @@ fieldset, .userbooksfilter {
 
 .login {
   width: 40%;
-  margin: 8% auto;
+  margin: 12% auto;
 }
 
 .signup {
   width: 50%;
-  margin: 6% auto;
+  margin: 7% auto;
 }
 
-.login-btn:hover, .button-submit:hover,.category-btn:hover {
+.login-btn:hover, .button-submit:hover, .category-btn:hover {
   background-color: #5BC0BE;
   border-color: white;
   color: #1C2541;
   text-decoration: none;
 }
 
-.login-btn, .button-submit ,.category-btn {
+.login-btn, .button-submit, .category-btn {
   background-color: #5BC0BE;
   border: 1px solid white;
   color: white;
   padding: 0.3rem 4rem;
-}
-
-.bg-mint {
-  background-color: #5BC0BE;
 }
 
 .custom-file {
@@ -92,4 +127,3 @@ fieldset, .userbooksfilter {
   height: calc(1.5em + .75rem + 2px);
   margin: 0;
 }
-

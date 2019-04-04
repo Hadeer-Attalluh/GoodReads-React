@@ -27,7 +27,7 @@ export default class BookDetails extends React.Component {
             <context.Consumer>
                 {
                     value => (
-                        <Container fluid={false} className="">
+                        <Container fluid={false} className="mt-7 mb-5">
                             <Row>
                                 <Col xs={4}>
                                     <Row className="no-gutters m-2">
@@ -60,10 +60,10 @@ export default class BookDetails extends React.Component {
                                         <Card.Body>
                                             <Card.Title>{this.state.title}</Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">By
-                                            <Link to={`/authors/${this.state.authorId}`}>{' ' + this.getAuthorFullName(value.authors, this.state.authorId)}</Link>
+                                            <Link className="link-mint" to={`/authors/${this.state.authorId}`}>{' ' + this.getAuthorFullName(value.authors, this.state.authorId)}</Link>
                                             </Card.Subtitle>
                                             <Card.Subtitle className="mb-2 text-muted">
-                                                <Link to={`/categories/${this.state.categoryId}`}>{' ' + value.Categories.find(a => a.id === this.state.categoryId).name}</Link>
+                                                <Link className="link-mint" to={`/categories/${this.state.categoryId}`}>{' ' + value.Categories.find(a => a.id === this.state.categoryId).name}</Link>
                                             </Card.Subtitle>
                                             <Card.Text className="text-muted">Published 2010</Card.Text>
                                             <Rating readonly initialRating={4} emptySymbol="far fa-star" fullSymbol="fas fa-star text-warning" />
@@ -75,7 +75,7 @@ export default class BookDetails extends React.Component {
                             <Row>
                                 <Col xs={12}>
                                     <Card >
-                                        <Card.Header className="bg-dark text-center text-light">Reviews</Card.Header>
+                                        <Card.Header className="bg-grey text-center text-light">Reviews</Card.Header>
                                         <ListGroup variant="li">
                                             <ListGroup.Item>
                                                 <Media>

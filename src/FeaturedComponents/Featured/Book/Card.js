@@ -15,11 +15,11 @@ export default class BookDisplayCard extends React.Component {
                                 <Card.Img variant="top" src={this.props.cover === "" ? "http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png" : require('../../../Assets/Books/' + this.props.cover)} alt="Book Cover" />
                                 <Card.Body>
                                     <Card.Title>
-                                        <Link to={`/books/${this.props.id}`}>{this.props.title}</Link>
+                                        <Link className="link-mint" to={`/books/${this.props.id}`}>{this.props.title}</Link>
                                     </Card.Title>
                                     <Card.Text>
                                         By
-                    <Link to={`/authors/${this.props.authorId}`}>{' ' + value.authors.find(a => a.id === this.props.authorId)['first-name']}</Link>
+                                       <Link className="link-mint" to={`/authors/${this.props.authorId}`}>{' ' + value.authors.find(a => a.id === this.props.authorId)['first-name']}</Link>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

@@ -9,7 +9,7 @@ export default class BookDisplayListing extends React.Component {
             <context.Consumer>
                 {
                     value => (
-                        <Container fluid={true}>
+                        <Container className="mb-5 mt-5">
                             <Row>
                                 <Col xs={12}>
                                     <Card>

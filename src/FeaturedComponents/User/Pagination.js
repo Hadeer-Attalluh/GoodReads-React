@@ -14,7 +14,7 @@ import Pagination from 'react-bootstrap/Pagination';
 const DisplayPagination = (props) => {
   return (
 
-    <Pagination>
+    <Pagination className="m-auto">
       {/* <Pagination.First /> */}
       <Pagination.Prev />
       {/* <Pagination.Ellipsis /> */}

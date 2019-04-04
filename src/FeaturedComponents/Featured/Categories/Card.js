@@ -11,10 +11,10 @@ export default class CategoryCard extends React.Component {
                 {
                     value =>
                         (
-                            <Card className="mt-4">
+                            <Card className="mt-4 bg-mint text-center">
                                 <Card.Body>
                                     <Card.Title>
-                                        <Link to={`/categories/${this.props.id}`}>{this.props.name}</Link>
+                                        <Link className="l-white" to={`/categories/${this.props.id}`}>{this.props.name}</Link>
                                     </Card.Title>
                                 </Card.Body>
                             </Card>

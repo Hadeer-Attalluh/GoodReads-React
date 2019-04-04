@@ -42,7 +42,7 @@ export class LoginForm extends Component {
             <context.Consumer>
                 {
                     value => (
-                        <Form className='login bg-grey form-border' onSubmit={this.handleSubmit(value)}>
+                        <Form className='login bg-darkgrey form-border' onSubmit={this.handleSubmit(value)}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label className="text-white">Email address</Form.Label>
                                 <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleChange} />
