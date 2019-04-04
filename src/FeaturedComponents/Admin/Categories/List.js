@@ -35,11 +35,11 @@ export default class AdminCategoriesList extends React.Component {
 								<Col sm={11}>
 								</Col>
 								<Col sm={1}>
-									<h3><i className="fas fa-plus-circle text-white bg-grey" onClick={this.handleShow}></i></h3>
+									<h3><i className="fas fa-plus-circle text-white bg-darkgrey" onClick={this.handleShow}></i></h3>
 								</Col>
 							</Row>
 							<AdminCategoriesAddEditForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false} />
-							<Table bordered hover responsive className="text-white bg-grey" >
+							<Table bordered hover responsive className="text-white bg-darkgrey" >
 								<thead>
 									<tr className=" text-center" >
 										<th>ID</th>

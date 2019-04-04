@@ -14,9 +14,9 @@ export default class UserBooksList extends React.Component {
         {
           value => (
             <form>
-              <fieldset className="userbooks bg-grey">
-                <legend className="legend text-white bg-grey"><h3>{value.UserBooksTableTitle}</h3> </legend>
-                <Table bordered hover responsive className="bg-grey text-white" >
+              <fieldset className="userbooks bg-darkgrey">
+                <legend className="legend text-white bg-darkgrey"><h3>{value.UserBooksTableTitle}</h3> </legend>
+                <Table bordered hover responsive className="text-white" >
                   <thead>
                     <tr className="no-gutters text-center" >
                       <th>cover</th>
