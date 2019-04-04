@@ -13,7 +13,7 @@ export default class UserBooksFilter extends React.Component {
 			<context.Consumer>
 				{
 					value => (
-						<div className="userbooksfilter text-white bg-grey">
+						<div className="userbooksfilter text-white bg-darkgrey">
 							<h6 className="filter_link" id="all" onClick={this.handleClick(value)}>All</h6><br />
 							<h6 className="filter_link" id="read" onClick={this.handleClick(value)}>Read</h6><br />
 							<h6 className="filter_link" id="currently reading" onClick={this.handleClick(value)}>Currently Reading</h6><br />
