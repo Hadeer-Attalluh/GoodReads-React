@@ -14,7 +14,7 @@ export default class AdminPanel extends React.Component {
     render() {
         return (
             <Container fluid={true} className="p-2 tabs">
-                <Tabs variant="tabs" activekey={this.state.key} onSelect={key => this.setState({ key })}>
+                <Tabs className="link-mint" activekey={this.state.key} onSelect={key => this.setState({ key })}>
                     <Tab eventKey="category" title="Categories">
                         <Categories />
                     </Tab>

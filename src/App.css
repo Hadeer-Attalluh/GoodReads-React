@@ -66,6 +66,16 @@ fieldset, .userbooksfilter {
 {
   margin-top: 73px;
 }
+.edit:before
+{
+  margin-right: 37px;
+}
+.tab-content
+{
+  border: .05px grey solid;
+  margin-bottom: 60px;
+
+}
 
 /*---------------------Navbar--------------------------*/
 

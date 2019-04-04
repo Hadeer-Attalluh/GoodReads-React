@@ -43,7 +43,7 @@ export default class AdminCategoryCard extends React.Component {
 								<td>{this.props.id}   </td>
 								<td>{this.props.name}</td>
 								<td>
-									<i className="fas fa-edit" onClick={this.handleShow} ></i>
+									<i className="fas fa-edit edit" onClick={this.handleShow} ></i>
 									<i className="fas fa-trash-alt" onClick={this.handleDelete(value)} ></i>
 								</td>
 							</tr>

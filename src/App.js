@@ -39,7 +39,7 @@ class App extends Component {
     this.addUser = this.addUser.bind(this);
     this.checkUser = this.checkUser.bind(this);
 
-    this.setFilerKey = this.setFilerKey.bind(this);
+    this.setFilterKeyAndUserBooksTableTitle = this.setFilterKeyAndUserBooksTableTitle.bind(this);
   }
 
   addAuthor(author) {
@@ -84,8 +84,11 @@ class App extends Component {
     this.setState({ Categories: newcategories })
   }
 
-  setFilerKey(key) {
-    this.setState({ filterKey: key });
+  setFilterKeyAndUserBooksTableTitle(key) {
+    this.setState({
+      filterKey: key,
+      UserBooksTableTitle: key
+    });
   }
 
   addUser(user) {
@@ -129,7 +132,7 @@ class App extends Component {
       //user
       UserBooksTableTitle: this.state.UserBooksTableTitle,
       UserBooks: this.state.UserBooks,
-      setFilterKey: this.setFilerKey,
+      setFilterKeyAndUserBooksTableTitle: this.setFilterKeyAndUserBooksTableTitle,
       filterKey: this.state.filterKey,
       isAdmin: this.state.isAdmin,
     }
