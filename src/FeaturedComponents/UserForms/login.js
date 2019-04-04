@@ -18,8 +18,6 @@ export class LoginForm extends Component {
     }
 
     handleSubmit = (value) => (e) => {
-        // debugger;
-        console.log(e);
         e.preventDefault();
         if (!(this.state.email && this.state.password)) return;
         const user = {
@@ -27,10 +25,12 @@ export class LoginForm extends Component {
             password: this.state.password,
         }
         value.checkUser(user);
-        console.log(value.isAdmin)
-        if (value.isAdmin) {
-            debugger;
+        console.log(value.loggedUser);
+        if (value.loggedUser.admin === true) {
             this.props.history.push('/admin');
+        }
+        else if (value.loggedUser.admin === false) {
+            this.props.history.push('/userProfile');
         }
         else {
             this.props.history.push('/categories');

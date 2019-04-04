@@ -24,7 +24,11 @@ class App extends Component {
       UserBooks: UserBooksData,
       UserBooksTableTitle: "All",
       filterKey: "all",
-      isAdmin: false,
+      loggedUser: {
+        email:'',
+        password:'',
+        admin: '',
+      },
     }
     this.addAuthor = this.addAuthor.bind(this);
     this.editAuthor = this.editAuthor.bind(this);
@@ -39,7 +43,7 @@ class App extends Component {
     this.addUser = this.addUser.bind(this);
     this.checkUser = this.checkUser.bind(this);
 
-    this.setFilerKey = this.setFilerKey.bind(this);
+    this.setFilterKeyAndUserBooksTableTitle = this.setFilterKeyAndUserBooksTableTitle.bind(this);
   }
 
   addAuthor(author) {
@@ -84,8 +88,11 @@ class App extends Component {
     this.setState({ Categories: newcategories })
   }
 
-  setFilerKey(key) {
-    this.setState({ filterKey: key });
+  setFilterKeyAndUserBooksTableTitle(key) {
+    this.setState({
+      filterKey: key,
+      UserBooksTableTitle: key
+    });
   }
 
   addUser(user) {
@@ -96,13 +103,16 @@ class App extends Component {
   checkUser(loginuser) {
     const allUsers = this.state.Users.slice();
     let filteredUsers = allUsers.find(user => {
-      return user.email === loginuser.email && user.password === Number(loginuser.password);
+      return user.email === loginuser.email && user.password === loginuser.password;
     });
     if (filteredUsers !== undefined) {
       let user = filteredUsers;
-      console.log(user.admin);
-      this.setState({ isAdmin: user.admin });
-
+      let loggedUser = {...this.state.loggedUser};
+      loggedUser.email = user.email;  
+      loggedUser.password = user.password;    
+      loggedUser.admin = user.admin;
+      console.log(loggedUser);
+      this.setState({ loggedUser });
     } else {
       console.log('user does not exist');
     }
@@ -129,9 +139,9 @@ class App extends Component {
       //user
       UserBooksTableTitle: this.state.UserBooksTableTitle,
       UserBooks: this.state.UserBooks,
-      setFilterKey: this.setFilerKey,
+      setFilterKeyAndUserBooksTableTitle: this.setFilterKeyAndUserBooksTableTitle,
       filterKey: this.state.filterKey,
-      isAdmin: this.state.isAdmin,
+      loggedUser: this.state.loggedUser,
     }
     return (
       <>

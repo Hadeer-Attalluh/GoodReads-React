@@ -23,10 +23,27 @@ export default class AdminCategoriesAddEditForm extends React.Component {
     }
     this.handleAdd = this.handleAdd.bind(this);
     this.hadlechange = this.hadlechange.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+
   }
   hadlechange(e) {
     this.setState({ name: e.target.value })
     console.log(e.target.value)
+  }
+  handleClose(e) {
+    this.props.onHide();
+    if (this.props.editmode) {
+      this.setState({
+        errors: [],
+      });
+    }
+    else {
+      this.setState(
+        {
+          errors: [],
+          name: " ",
+        })
+    }
   }
   handleAdd = (value) => (e) => {
     e.preventDefault();
@@ -54,6 +71,7 @@ export default class AdminCategoriesAddEditForm extends React.Component {
         console.log(categories);
         this.setState({
           name: editedbook.name,
+          errors: [],
         });
       }
       else {
@@ -61,7 +79,8 @@ export default class AdminCategoriesAddEditForm extends React.Component {
         value.setCategories(newCategories);
         console.log(newCategories);
         this.setState({
-          name: newBook.name,
+          name: "",
+          errors: [],
         });
       }
       this.props.onHide();
@@ -93,7 +112,7 @@ export default class AdminCategoriesAddEditForm extends React.Component {
                 </Form>
                 {
                   this.state.errors.length
-                    ? this.state.errors.map(e => <h1 key={e.name}>{e.name}{''}is not valid</h1>)
+                    ? this.state.errors.map(e => <h1 key={e.name}>{e.name}{''}is  not valid</h1>)
                     : <h1></h1>
                 }
               </Modal.Body>
@@ -101,7 +120,7 @@ export default class AdminCategoriesAddEditForm extends React.Component {
                 <Button className="bg-mint category-btn" type="submit" onClick={this.handleAdd(value)}>
                   {this.props.editmode ? 'Save Changes' : 'Add '}
                 </Button>
-                <Button className="bg-mint category-btn" onClick={this.props.onHide}>Close</Button>
+                <Button className="bg-mint category-btn" onClick={this.handleClose}>Close</Button>
               </Modal.Footer>
             </Modal>)
 
