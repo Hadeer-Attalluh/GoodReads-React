@@ -31,7 +31,7 @@ export default class UserBooksList extends React.Component {
                     {value.UserBooks.length
                       ? value.UserBooks.filter(a => value.filterKey === 'all' ? (a.shelve === "currently reading" || a.shelve === "read" || a.shelve === "wanted to read") : a.shelve === value.filterKey).map(b => <UserBookCard key={b.id}  {...b} />)
                       : <tr text-center>welcome to Our Website......... you will enjoy....select books to be easy to find....</tr>}
-                    {console.log(value.FilteredUserBooks)}
+
                   </tbody>
                 </Table>
               </fieldset>

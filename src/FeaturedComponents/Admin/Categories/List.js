@@ -39,9 +39,9 @@ export default class AdminCategoriesList extends React.Component {
 								</Col>
 							</Row>
 							{this.state.showAddModal && <AdminCategoriesAddEditForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false} />}
-							<Table bordered hover responsive className="text-white bg-darkgrey" >
+							<Table bordered hover responsive >
 								<thead>
-									<tr className=" text-center" >
+									<tr className=" text-center text-white bg-darkgrey" >
 										<th>ID</th>
 										<th>Name </th>
 										<th> Actions </th>
