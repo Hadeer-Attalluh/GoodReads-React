@@ -10,7 +10,7 @@ import DisplayPagination from './Pagination'
 
 const UserHome = (props) => {
 	return (
-		<Container>
+		<Container className="userProfile">
 			<Row>
 				{/* <Col sm={1}></Col> */}
 				<Col sm={2}>

@@ -72,11 +72,14 @@ fieldset, .userbooksfilter {
 }
 .tab-content
 {
-  border: .05px grey solid;
+  
   margin-bottom: 60px;
 
 }
-
+.userProfile
+{
+  margin-bottom: 75px;
+}
 /*---------------------Navbar--------------------------*/
 
 .Navbar {

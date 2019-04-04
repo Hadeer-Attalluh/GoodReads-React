@@ -7,7 +7,6 @@ import Rating from 'react-rating';
 export default class UserBookCard extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.state = {
 			shelve: props.shelve,
 		}
