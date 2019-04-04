@@ -74,9 +74,7 @@ export default class AddEditAuthorForm extends React.Component {
       this.props.onHide();
     }
     else {
-      this.setState({ errors: [...formValidatorCtx.validationErrors()] }, () => {
-        console.log(this.state.errors)
-      });
+      this.setState({ errors: [...formValidatorCtx.validationErrors()] });
     }
   }
 
@@ -90,7 +88,7 @@ export default class AddEditAuthorForm extends React.Component {
         {
           value => (
             <Modal show={this.props.show} onHide={this.props.onHide}>
-              <Modal.Header closeButton>
+              <Modal.Header closeButton className="text-white bg-darkgrey">
                 <Modal.Title>{this.props.editmode ? 'Edit Author' : 'Add New Author'}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -139,7 +137,7 @@ export default class AddEditAuthorForm extends React.Component {
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.props.onHide}>Close</Button>
-                <Button variant="primary" type="submit" onClick={this.props.editmode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)}>{this.props.editmode ? 'Save Changes' : 'Add'}</Button>
+                <Button className="bg-mint border-0" type="submit" onClick={this.props.editmode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)}>{this.props.editmode ? 'Save Changes' : 'Add'}</Button>
               </Modal.Footer>
             </Modal>
           )

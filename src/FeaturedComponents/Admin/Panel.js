@@ -26,7 +26,6 @@ export default class AdminPanel extends React.Component {
                     </Tab>
                 </Tabs>
             </Container>
-
         );
     }
 }

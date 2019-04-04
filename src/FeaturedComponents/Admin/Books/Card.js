@@ -1,6 +1,6 @@
 /* eslint-disable lines-between-class-members */
 import React from 'react';
-import { ListGroup, Row, Col } from 'react-bootstrap';
+// import { /*ListGroup,*/ Row, Col } from 'react-bootstrap';
 
 import { context } from '../../../App';
 
@@ -30,7 +30,7 @@ export default class BookAdminCard extends React.Component {
                 {
                     value => (
                         <React.Fragment>
-                            <ListGroup.Item as="li">
+                            {/* <ListGroup.Item as="li">
                                 <Row className="no-gutters text-center">
                                     <Col sm={1} className="d-inline"><h4 className="text-truncate">{this.props.id}</h4></Col>
                                     <Col sm={3} className="d-inline"><h4 className="text-truncate">{this.props.cover}</h4></Col>
@@ -40,7 +40,20 @@ export default class BookAdminCard extends React.Component {
                                     <Col sm={1}><i className="fas fa-edit" onClick={this.handleShow} /></Col>
                                     <Col sm={1}><i className="fas fa-trash-alt" onClick={this.handleDelete(value.deleteBook)} /></Col>
                                 </Row>
-                            </ListGroup.Item>
+                            </ListGroup.Item> */}
+                            <tr className="no-gutters text-center">
+                                <td className="text-truncate">{this.props.id}</td>
+                                <td className="text-truncate">{this.props.cover}</td>
+                                <td className="text-truncate">{this.props.title}</td>
+                                <td className="text-truncate">{this.props.categoryId}</td>
+                                <td className="text-truncate">{this.props.authorId}</td>
+                                <td>
+                                    <i className="fas fa-edit" onClick={this.handleShow} />
+                                </td>
+                                <td>
+                                    <i className="fas fa-trash-alt" onClick={this.handleDelete(value.deleteBook)} />
+                                </td>
+                            </tr>
                             {this.state.showEditModal && <EditBookForm show={this.state.showEditModal} onHide={this.handleClose} editmode {...this.props} />}
                         </React.Fragment>
                     )

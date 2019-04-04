@@ -68,9 +68,7 @@ export default class AddEditBookForm extends React.Component {
             this.props.onHide();
         }
         else {
-            this.setState({ errors: [...formValidatorCtx.validationErrors()] }, () => {
-                console.log(this.state.errors)
-            });
+            this.setState({ errors: [...formValidatorCtx.validationErrors()] });
         }
     }
     handleChange(e) {
@@ -131,7 +129,7 @@ export default class AddEditBookForm extends React.Component {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.props.onHide}>Close</Button>
-                                <Button variant="primary" type="submit" onClick={this.props.editmode ? this.handleSubmit(value.editBook) : this.handleSubmit(value.addBook)}>{this.props.editmode ? "Save Changes" : "Add"}</Button>
+                                <Button className="bg-mint border-0" type="submit" onClick={this.props.editmode ? this.handleSubmit(value.editBook) : this.handleSubmit(value.addBook)}>{this.props.editmode ? "Save Changes" : "Add"}</Button>
                             </Modal.Footer>
                         </Modal>
                     )

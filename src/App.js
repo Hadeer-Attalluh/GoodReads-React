@@ -25,8 +25,8 @@ class App extends Component {
       UserBooksTableTitle: "All",
       filterKey: "all",
       loggedUser: {
-        email:'',
-        password:'',
+        email: '',
+        password: '',
         admin: '',
       },
     }
@@ -107,9 +107,9 @@ class App extends Component {
     });
     if (filteredUsers !== undefined) {
       let user = filteredUsers;
-      let loggedUser = {...this.state.loggedUser};
-      loggedUser.email = user.email;  
-      loggedUser.password = user.password;    
+      let loggedUser = { ...this.state.loggedUser };
+      loggedUser.email = user.email;
+      loggedUser.password = user.password;
       loggedUser.admin = user.admin;
       console.log(loggedUser);
       this.setState({ loggedUser });

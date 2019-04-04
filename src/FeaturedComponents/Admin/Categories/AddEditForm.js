@@ -13,7 +13,7 @@ export default class AdminCategoriesAddEditForm extends React.Component {
         name: this.props.name,
         errors: []
       }
-      console.log(this.props)
+      // console.log(this.props)
     }
     else {
       this.state = {
@@ -28,7 +28,7 @@ export default class AdminCategoriesAddEditForm extends React.Component {
   }
   hadlechange(e) {
     this.setState({ name: e.target.value })
-    console.log(e.target.value)
+    // console.log(e.target.value)
   }
   handleClose(e) {
     this.props.onHide();
@@ -55,29 +55,29 @@ export default class AdminCategoriesAddEditForm extends React.Component {
     }, { requiredByDefault: false }).newContext();
     formValidatorCtx.validate({ name: this.state.name });
     if (formValidatorCtx.validationErrors().length === 0) {
-      const newBook = {
+      const newCategory = {
         id: uuidv1(),
         name: this.state.name,
         deleted: false,
       };
       const categories = value.Categories.slice();
       if (this.props.editmode) {
-        newBook.id = this.props.id;
-        newBook.index = categories.findIndex(a => a.id === newBook.id)
-        const editedbook = categories[newBook.index];
-        editedbook.name = this.state.name;
-        categories[newBook.index] = editedbook;
+        newCategory.id = this.props.id;
+        newCategory.index = categories.findIndex(a => a.id === newCategory.id)
+        const editedCategory = categories[newCategory.index];
+        editedCategory.name = this.state.name;
+        categories[newCategory.index] = editedCategory;
         value.setCategories(categories);
-        console.log(categories);
+        // console.log(categories);
         this.setState({
-          name: editedbook.name,
+          name: editedCategory.name,
           errors: [],
         });
       }
       else {
-        const newCategories = [...categories].concat(newBook)
+        const newCategories = [...categories].concat(newCategory)
         value.setCategories(newCategories);
-        console.log(newCategories);
+        // console.log(newCategories);
         this.setState({
           name: "",
           errors: [],
@@ -95,8 +95,8 @@ export default class AdminCategoriesAddEditForm extends React.Component {
       <context.Consumer>
         {
           value => (
-            <Modal {...this.props} >
-              <Modal.Header className="text-white bg-darkgrey">
+            <Modal show={this.props.show} onHide={this.props.onHide} >
+              <Modal.Header>
                 <h3  >{this.props.editmode ? ' Edit Category' : 'Add Category'}</h3>
               </Modal.Header>
               <Modal.Body className="text-white bg-darkgrey">
@@ -106,21 +106,24 @@ export default class AdminCategoriesAddEditForm extends React.Component {
                       Category Name
                    </Form.Label>
                     <Col sm="9">
-                      <Form.Control type="text" value={this.state.name} onChange={this.hadlechange} />
+                      <Form.Control
+                        type="text"
+                        value={this.state.name}
+                        onChange={this.hadlechange}
+                        isInvalid={this.state.errors.length} />
+                      {
+                        this.state.errors.length > 0 &&
+                        <Form.Control.Feedback type="invalid">Category Name is not Valid</Form.Control.Feedback>
+                      }
                     </Col>
                   </Form.Group>
                 </Form>
-                {
-                  this.state.errors.length
-                    ? this.state.errors.map(e => <h1 key={e.name}>{e.name}{''}is  not valid</h1>)
-                    : <h1></h1>
-                }
               </Modal.Body>
               <Modal.Footer className="text-white bg-darkgrey">
                 <Button className="bg-mint category-btn" type="submit" onClick={this.handleAdd(value)}>
                   {this.props.editmode ? 'Save Changes' : 'Add '}
                 </Button>
-                <Button className="bg-mint category-btn" onClick={this.handleClose}>Close</Button>
+                <Button className="bg-mint category-btn border-0" onClick={this.handleClose}>Close</Button>
               </Modal.Footer>
             </Modal>)
 

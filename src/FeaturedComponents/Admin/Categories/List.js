@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 
 import { context } from '../../../App';
 import AdminCategoryCard from './Card'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import AdminCategoriesAddEditForm from './AddEditForm'
 
 export default class AdminCategoriesList extends React.Component {
@@ -35,10 +35,10 @@ export default class AdminCategoriesList extends React.Component {
 								<Col sm={11}>
 								</Col>
 								<Col sm={1}>
-									<h3><i className="fas fa-plus-circle text-white bg-darkgrey" onClick={this.handleShow}></i></h3>
+									<Button className="bg-darkgrey border-0" onClick={this.handleShow}><i className="fas fa-plus-circle text-white"></i></Button>
 								</Col>
 							</Row>
-							<AdminCategoriesAddEditForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false} />
+							{this.state.showAddModal && <AdminCategoriesAddEditForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false} />}
 							<Table bordered hover responsive className="text-white bg-darkgrey" >
 								<thead>
 									<tr className=" text-center" >
@@ -49,7 +49,7 @@ export default class AdminCategoriesList extends React.Component {
 
 								</thead>
 								<tbody>
-									{console.log(value.Categories)}
+									{/* {console.log(value.Categories)} */}
 									{value.Categories.map(c => <AdminCategoryCard key={c.id}  {...c} />)}
 
 								</tbody>

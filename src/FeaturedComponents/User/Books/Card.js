@@ -15,7 +15,7 @@ export default class UserBookCard extends React.Component {
 	}
 	handleChange = (value) => (e) => {
 		this.setState({ [e.target.name]: e.target.value })
-		console.log(this.props)
+		// console.log(this.props)
 		value.UserBooks.find(b => b.id === this.props.id).shelve = e.target.value;
 	}
 	render() {

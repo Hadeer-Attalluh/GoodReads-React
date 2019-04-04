@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
+import { Container, Row, Col, /*ListGroup,*/ Button, Table } from 'react-bootstrap';
 import { context } from '../../../App';
 
 import BookAdminCard from './Card';
@@ -25,13 +25,13 @@ export default class BooksAdminListing extends React.Component {
                 {
                     value => (
                         <Container fluid={true} className="p-2">
-                            <Row className="no-gutters m-1 d-flex flex-row-reverse">
-                                <Button className="align-self-end" onClick={this.handleShow}><i className="fas fa-book"></i> <i className="fas fa-plus"></i></Button>
-                            </Row>
                             {this.state.showAddModal && <AddBookForm show={this.state.showAddModal} onHide={this.handleClose} editmode={false} />}
+                            <Row className="no-gutters m-1 d-flex flex-row-reverse">
+                                <Button className="align-self-end border-0 bg-darkgrey" onClick={this.handleShow}><i className="fas fa-book"></i> <i className="fas fa-plus"></i></Button>
+                            </Row>
                             <Row className="no-gutters m-1">
                                 <Col sm={12}>
-                                    <ListGroup>
+                                    {/* <ListGroup>
                                         <ListGroup.Item as="li" >
                                             <Row className="no-gutters text-center">
                                                 <Col sm={1}><h4>ID</h4></Col>
@@ -43,7 +43,22 @@ export default class BooksAdminListing extends React.Component {
                                             </Row>
                                         </ListGroup.Item>
                                         {value.books.filter(b => b.deleted === false).map(b => <BookAdminCard {...b} key={b.id} />)}
-                                    </ListGroup>
+                                    </ListGroup> */}
+                                    <Table bordered hover responsive className="text-center">
+                                        <thead className="text-white bg-darkgrey">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Cover</th>
+                                                <th>Title</th>
+                                                <th>Category ID</th>
+                                                <th>Author ID</th>
+                                                <th colSpan="2">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {value.books.filter(b => b.deleted === false).map(b => <BookAdminCard {...b} key={b.id} />)}
+                                        </tbody>
+                                    </Table>
                                 </Col>
                             </Row>
                         </Container>
