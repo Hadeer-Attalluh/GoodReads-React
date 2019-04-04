@@ -16,6 +16,7 @@ export default class AddEditBookForm extends React.Component {
                 authorId: this.props.authorId,
                 categoryId: this.props.categoryId,
                 cover: this.props.cover,
+                errors: []
             }
         }
         else {
@@ -24,29 +25,38 @@ export default class AddEditBookForm extends React.Component {
                 authorId: "1",
                 categoryId: "1",
                 cover: "",
+                errors: []
             }
         }
         this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit = (actionHandler) => (e) => {
         e.preventDefault();
-        const formValidatorCtx = new SimpleSchema({
+        e.stopPropagation();
+
+        let newBook = {
+            id: uuidv1(),
+            title: this.state.title,
+            authorId: this.state.authorId,
+            categoryId: this.state.categoryId,
+            cover: this.state.cover,
+            deleted: false
+        }
+
+        const formValidator = new SimpleSchema({
             title: { type: String, required: true, min: 1, max: 50 },
             categoryId: { type: String, required: true },
             authorId: { type: String, required: true },
-            cover: { type: String }, // has  an issue if regex
-        }, { requiredByDefault: false }).newContext();
-        // formValidatorCtx.validate(this.state).clean(this.state,{removeEmptyStrings: true});
-        formValidatorCtx.validate(this.state);
-        if (formValidatorCtx.validationErrors().length === 0) {
-            let newBook = {
-                id: uuidv1(),
-                title: this.state.title,
-                authorId: this.state.authorId,
-                categoryId: this.state.categoryId,
-                cover: this.state.cover,
-                deleted: false
+            cover: { type: String, regEx: SimpleSchema.RegEx.Url },
+            extras: {
+                type: Object,
+                blackbox: true
             }
+        }, { requiredByDefault: false });
+        let formValidatorCtx = formValidator.newContext();
+        formValidatorCtx.validate(formValidator.clean(newBook));
+
+        if (formValidatorCtx.validationErrors().length === 0) {
             if (this.props.editmode) {
                 newBook.id = this.props.id;
                 actionHandler(newBook); // edit function
@@ -58,7 +68,9 @@ export default class AddEditBookForm extends React.Component {
             this.props.onHide();
         }
         else {
-            console.log(formValidatorCtx.validationErrors());
+            this.setState({ errors: [...formValidatorCtx.validationErrors()] }, () => {
+                console.log(this.state.errors)
+            });
         }
     }
     handleChange(e) {
@@ -77,7 +89,14 @@ export default class AddEditBookForm extends React.Component {
                                 <Form onSubmit={this.props.editmode ? this.handleSubmit(value.editBook) : this.handleSubmit(value.addBook)}>
                                     <Form.Group controlId="title">
                                         <Form.Label>Book Name</Form.Label>
-                                        <Form.Control placeholder="Enter Book Name" name="title" value={this.state.title} onChange={this.handleChange} />
+                                        <Form.Control
+                                            placeholder="Enter Book Name"
+                                            name="title"
+                                            value={this.state.title} onChange={this.handleChange}
+                                            isValid={!this.state.errors.find(e => e.name === "title")}
+                                            isInvalid={this.state.errors.find(e => e.name === "title")} />
+                                        <Form.Control.Feedback type="valid">Looks Good!</Form.Control.Feedback>
+                                        <Form.Control.Feedback type="invalid">Title must be between 3-50 characters!</Form.Control.Feedback>
                                     </Form.Group>
 
                                     <Form.Group as={Col}>
@@ -100,7 +119,12 @@ export default class AddEditBookForm extends React.Component {
 
                                     <Form.Group controlId="photoURL">
                                         <Form.Label>Book Cover</Form.Label>
-                                        <Form.Control placeholder="Enter Photo URL" name="cover" value={this.state.cover} onChange={this.handleChange} />
+                                        <Form.Control
+                                            placeholder="Enter Photo URL"
+                                            name="cover"
+                                            value={this.state.cover} onChange={this.handleChange}
+                                            isInvalid={this.state.errors.find(e => e.name === "cover")} />
+                                        <Form.Control.Feedback type="invalid">Invalid URL!</Form.Control.Feedback>
                                     </Form.Group>
 
                                 </Form>

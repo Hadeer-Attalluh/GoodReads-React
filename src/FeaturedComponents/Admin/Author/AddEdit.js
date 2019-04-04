@@ -15,6 +15,7 @@ export default class AddEditAuthorForm extends React.Component {
         'last-name': this.props['last-name'],
         photo: this.props.photo,
         birthdate: this.props.birthdate,
+        errors: []
       };
     }
     else {
@@ -23,6 +24,7 @@ export default class AddEditAuthorForm extends React.Component {
         'last-name': '',
         photo: '',
         birthdate: '',
+        errors: []
       };
     }
     this.handleChange = this.handleChange.bind(this);
@@ -30,27 +32,34 @@ export default class AddEditAuthorForm extends React.Component {
 
   handleSubmit = actionHandler => (e) => {
     e.preventDefault();
-    const formValidatorCtx = new SimpleSchema({
+    e.stopPropagation();
+    const newAuthor = {
+      id: uuidv1(),
+      'first-name': this.state['first-name'],
+      'last-name': this.state['last-name'],
+      photo: this.state.photo,
+      birthdate: this.state.birthdate,
+      deleted: false,
+    };
+    let formValidator = new SimpleSchema({
       'first-name': {
         type: String, required: true, min: 3, max: 50
       },
       'last-name': {
         type: String, required: true, min: 3, max: 50
       },
-      photo: { type: String, regEx: SimpleSchema.RegEx.Url }, // has  an issue
+      photo: { type: String, regEx: SimpleSchema.RegEx.Url },
       birthdate: String,
-    }, { requiredByDefault: false }).newContext();
-    // formValidatorCtx.validate(this.state).clean(this.state,{removeEmptyStrings: true});
-    formValidatorCtx.validate(this.state);
+      extras: {
+        type: Object,
+        blackbox: true
+      }
+    }, { requiredByDefault: false });
+
+    let formValidatorCtx = formValidator.newContext();
+    formValidatorCtx.validate(formValidatorCtx.clean(newAuthor));
+
     if (formValidatorCtx.validationErrors().length === 0) {
-      const newAuthor = {
-        id: uuidv1(),
-        'first-name': this.state['first-name'],
-        'last-name': this.state['last-name'],
-        photo: this.state.photo,
-        birthdate: this.state.birthdate,
-        deleted: false,
-      };
       if (this.props.editmode) {
         newAuthor.id = this.props.id;
         actionHandler(newAuthor); // edit function
@@ -65,7 +74,9 @@ export default class AddEditAuthorForm extends React.Component {
       this.props.onHide();
     }
     else {
-      console.log(formValidatorCtx.validationErrors());
+      this.setState({ errors: [...formValidatorCtx.validationErrors()] }, () => {
+        console.log(this.state.errors)
+      });
     }
   }
 
@@ -86,16 +97,39 @@ export default class AddEditAuthorForm extends React.Component {
                 <Form onSubmit={this.props.editmode ? this.handleSubmit(value.editAuthor) : this.handleSubmit(value.addAuthor)} >
                   <Form.Group controlId="fName">
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control placeholder="Enter First Name" name="first-name" value={this.state['first-name']} onChange={this.handleChange} />
+                    <Form.Control
+                      isValid={!this.state.errors.find(e => e.name === "first-name")}
+                      isInvalid={this.state.errors.find(e => e.name === "first-name")}
+                      placeholder="Enter First Name"
+                      name="first-name"
+                      value={this.state['first-name']}
+                      onChange={this.handleChange} />
+                    <Form.Control.Feedback type="valid">Looks Good!</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">Name must be between 3-50 characters!</Form.Control.Feedback>
                   </Form.Group>
 
                   <Form.Group controlId="lName">
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control placeholder="Enter Last Name" name="last-name" value={this.state['last-name']} onChange={this.handleChange} />
+                    <Form.Control
+                      placeholder="Enter Last Name"
+                      name="last-name"
+                      value={this.state['last-name']}
+                      onChange={this.handleChange}
+                      isValid={!this.state.errors.find(e => e.name === "last-name")}
+                      isInvalid={this.state.errors.find(e => e.name === "last-name")} />
+                    <Form.Control.Feedback type="valid">Looks Good!</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">Name must be between 3-50 characters!</Form.Control.Feedback>
                   </Form.Group>
+
                   <Form.Group controlId="photoURL">
                     <Form.Label>Photo URl</Form.Label>
-                    <Form.Control placeholder="Enter Photo URL" name="photo" value={this.state.photo} onChange={this.handleChange} />
+                    <Form.Control
+                      placeholder="Enter Photo URL"
+                      name="photo"
+                      value={this.state.photo}
+                      onChange={this.handleChange}
+                      isInvalid={this.state.errors.find(e => e.name === "photo")} />
+                    <Form.Control.Feedback type="invalid">Invalid URL!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group controlId="birthdate">
                     <Form.Label>Birthdate</Form.Label>

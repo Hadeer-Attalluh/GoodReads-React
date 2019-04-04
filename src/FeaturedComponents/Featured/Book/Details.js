@@ -75,7 +75,7 @@ export default class BookDetails extends React.Component {
                             <Row>
                                 <Col xs={12}>
                                     <Card >
-                                        <Card.Header className="bg-grey text-center text-light">Reviews</Card.Header>
+                                        <Card.Header className="bg-dark text-center text-light">Reviews</Card.Header>
                                         <ListGroup variant="li">
                                             <ListGroup.Item>
                                                 <Media>
