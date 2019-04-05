@@ -48,6 +48,10 @@ fieldset, .userbooksfilter {
   text-decoration: none;
 }
 
+.text-mint {
+  color: #5BC0BE;
+}
+
 .footer {
   position: fixed;
   left: 0;

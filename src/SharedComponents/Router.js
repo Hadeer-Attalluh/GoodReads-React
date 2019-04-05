@@ -13,7 +13,9 @@ import { LoginForm } from '../FeaturedComponents/UserForms/login';
 import { SignUpForm } from '../FeaturedComponents/UserForms/signup';
 import CategoriesListing from '../FeaturedComponents/Featured/Categories/Listing';
 import BookDetails from '../FeaturedComponents/Featured/Book/Details';
+
 import AuthorDetails from '../FeaturedComponents/Featured/Author/Details';
+
 import CategoryDetails from '../FeaturedComponents/Featured/Categories/Details';
 import Footer from '../SharedComponents/Footer';
 

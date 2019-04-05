@@ -96,23 +96,25 @@ export default class BookDetails extends React.Component {
                                                     </Media.Body>
                                                 </Media>
                                             </ListGroup.Item>
-                                            <ListGroup.Item><Media>
-                                                <img
-                                                    width={64}
-                                                    height={64}
-                                                    className="align-self-start mr-3"
-                                                    src="http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png"
-                                                    alt="Generic placeholder"
-                                                />
-                                                <Media.Body>
-                                                    <h5>Review 2</h5>
-                                                    <p>
-                                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                                        ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                                                        tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                                            <ListGroup.Item>
+                                                <Media>
+                                                    <img
+                                                        width={64}
+                                                        height={64}
+                                                        className="align-self-start mr-3"
+                                                        src="http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png"
+                                                        alt="Generic placeholder"
+                                                    />
+                                                    <Media.Body>
+                                                        <h5>Review 2</h5>
+                                                        <p>
+                                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
+                                                            ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
+                                                            tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
                                         fringilla. Donec lacinia congue felis in faucibus. </p>
-                                                </Media.Body>
-                                            </Media></ListGroup.Item>
+                                                    </Media.Body>
+                                                </Media>
+                                            </ListGroup.Item>
                                         </ListGroup>
                                     </Card>
                                 </Col>
