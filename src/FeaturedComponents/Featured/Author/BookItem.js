@@ -10,14 +10,14 @@ export default function AuthorBookItem(props) {
                 <Card>
                     <Card.Img
                         className="align-self-start mr-3 img-fluid"
-                        src={props.cover === "" ? "http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png" : require('../../../Assets/Books/' + props.cover)}
+                        src=/*{props.cover === "" ? */"http://kalaharilifestyle.com/wp-content/uploads/2014/04/placeholder4.png" /*: require('../../../Assets/Books/' + props.cover)}*/
                         alt="Book Picture"
                     />
                 </Card>
             </Col>
             <Col >
                 <Card className="border-0">
-                    <Link to={`/books/${props.id}`} className="link-mint">
+                    <Link to={`/books/${props._id}`} className="link-mint">
                         <Card.Title className="text-capitalize">{props.title}</Card.Title>
                     </Link>
                     <Rating readonly initialRating={3} emptySymbol="far fa-star" fullSymbol="fas fa-star text-warning" />
