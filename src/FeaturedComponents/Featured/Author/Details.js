@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
-import { getAuthorById, getBooksByAuthorId } from '../../../helper';
 import { getauthorDetails, getauthorbooks } from '../../../API/Authors';
 import AuthorBookItem from './BookItem';
 
@@ -12,12 +11,7 @@ export default class AuthorDetails extends React.Component {
             author: {}
         }
     }
-    // componentWillMount() {
-    //     const id = this.props.match.params.authorId;
-    //     this.setState({
-    //         ...getAuthorById(id), books: [...getBooksByAuthorId(id)]
-    //     });
-    // }
+
     componentDidMount() {
         const id = this.props.match.params.authorId;
         getauthorDetails(id)
@@ -80,7 +74,6 @@ export default class AuthorDetails extends React.Component {
                                 )
                             }
                         </ListGroup>
-
                     </Col>
                 </Row>
             </Container >
